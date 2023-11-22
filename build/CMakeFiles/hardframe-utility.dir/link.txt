@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc lib/libhardframe-utility.a "CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o"
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib lib/libhardframe-utility.a
