@@ -19,7 +19,8 @@ target_include_directories(${PROJECT_NAME}-utility PUBLIC
     # /usr/local/include/hardframe/utility/utility.hpp
 )
 target_sources(${PROJECT_NAME}-utility PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/funcs/casts.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/types/transform.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/types/loadable.cpp
 )
 
 add_executable(${PROJECT_NAME}-test project/main.cpp)

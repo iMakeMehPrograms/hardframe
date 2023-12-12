@@ -142,29 +142,53 @@ hardframe-test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-test.dir/build.make CMakeFiles/hardframe-test.dir/build
 .PHONY : hardframe-test/fast
 
-hardframe/source/utility/funcs/casts.o: hardframe/source/utility/funcs/casts.cpp.o
-.PHONY : hardframe/source/utility/funcs/casts.o
+hardframe/source/utility/types/loadable.o: hardframe/source/utility/types/loadable.cpp.o
+.PHONY : hardframe/source/utility/types/loadable.o
 
 # target to build an object file
-hardframe/source/utility/funcs/casts.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o
-.PHONY : hardframe/source/utility/funcs/casts.cpp.o
+hardframe/source/utility/types/loadable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o
+.PHONY : hardframe/source/utility/types/loadable.cpp.o
 
-hardframe/source/utility/funcs/casts.i: hardframe/source/utility/funcs/casts.cpp.i
-.PHONY : hardframe/source/utility/funcs/casts.i
+hardframe/source/utility/types/loadable.i: hardframe/source/utility/types/loadable.cpp.i
+.PHONY : hardframe/source/utility/types/loadable.i
 
 # target to preprocess a source file
-hardframe/source/utility/funcs/casts.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.i
-.PHONY : hardframe/source/utility/funcs/casts.cpp.i
+hardframe/source/utility/types/loadable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.i
+.PHONY : hardframe/source/utility/types/loadable.cpp.i
 
-hardframe/source/utility/funcs/casts.s: hardframe/source/utility/funcs/casts.cpp.s
-.PHONY : hardframe/source/utility/funcs/casts.s
+hardframe/source/utility/types/loadable.s: hardframe/source/utility/types/loadable.cpp.s
+.PHONY : hardframe/source/utility/types/loadable.s
 
 # target to generate assembly for a file
-hardframe/source/utility/funcs/casts.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.s
-.PHONY : hardframe/source/utility/funcs/casts.cpp.s
+hardframe/source/utility/types/loadable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.s
+.PHONY : hardframe/source/utility/types/loadable.cpp.s
+
+hardframe/source/utility/types/transform.o: hardframe/source/utility/types/transform.cpp.o
+.PHONY : hardframe/source/utility/types/transform.o
+
+# target to build an object file
+hardframe/source/utility/types/transform.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o
+.PHONY : hardframe/source/utility/types/transform.cpp.o
+
+hardframe/source/utility/types/transform.i: hardframe/source/utility/types/transform.cpp.i
+.PHONY : hardframe/source/utility/types/transform.i
+
+# target to preprocess a source file
+hardframe/source/utility/types/transform.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.i
+.PHONY : hardframe/source/utility/types/transform.cpp.i
+
+hardframe/source/utility/types/transform.s: hardframe/source/utility/types/transform.cpp.s
+.PHONY : hardframe/source/utility/types/transform.s
+
+# target to generate assembly for a file
+hardframe/source/utility/types/transform.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.s
+.PHONY : hardframe/source/utility/types/transform.cpp.s
 
 project/main.o: project/main.cpp.o
 .PHONY : project/main.o
@@ -200,9 +224,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... hardframe-test"
 	@echo "... hardframe-utility"
-	@echo "... hardframe/source/utility/funcs/casts.o"
-	@echo "... hardframe/source/utility/funcs/casts.i"
-	@echo "... hardframe/source/utility/funcs/casts.s"
+	@echo "... hardframe/source/utility/types/loadable.o"
+	@echo "... hardframe/source/utility/types/loadable.i"
+	@echo "... hardframe/source/utility/types/loadable.s"
+	@echo "... hardframe/source/utility/types/transform.o"
+	@echo "... hardframe/source/utility/types/transform.i"
+	@echo "... hardframe/source/utility/types/transform.s"
 	@echo "... project/main.o"
 	@echo "... project/main.i"
 	@echo "... project/main.s"

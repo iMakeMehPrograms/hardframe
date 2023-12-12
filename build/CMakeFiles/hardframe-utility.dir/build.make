@@ -69,31 +69,47 @@ include CMakeFiles/hardframe-utility.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hardframe-utility.dir/flags.make
 
-CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o: CMakeFiles/hardframe-utility.dir/flags.make
-CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o: /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/funcs/casts.cpp
-CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o: CMakeFiles/hardframe-utility.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o -MF CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o.d -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o -c /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/funcs/casts.cpp
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o: CMakeFiles/hardframe-utility.dir/flags.make
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o: /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/transform.cpp
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o: CMakeFiles/hardframe-utility.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o -MF CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o.d -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o -c /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/transform.cpp
 
-CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/funcs/casts.cpp > CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.i
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/transform.cpp > CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.i
 
-CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/funcs/casts.cpp -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.s
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/transform.cpp -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.s
+
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o: CMakeFiles/hardframe-utility.dir/flags.make
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o: /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/loadable.cpp
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o: CMakeFiles/hardframe-utility.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o -MF CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o.d -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o -c /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/loadable.cpp
+
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/loadable.cpp > CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.i
+
+CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/kprainey/Desktop/C++/hardframe/hardframe/source/utility/types/loadable.cpp -o CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.s
 
 # Object files for target hardframe-utility
 hardframe__utility_OBJECTS = \
-"CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o"
+"CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o" \
+"CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o"
 
 # External object files for target hardframe-utility
 hardframe__utility_EXTERNAL_OBJECTS =
 
-lib/libhardframe-utility.a: CMakeFiles/hardframe-utility.dir/hardframe/source/utility/funcs/casts.cpp.o
+lib/libhardframe-utility.a: CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o
+lib/libhardframe-utility.a: CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o
 lib/libhardframe-utility.a: CMakeFiles/hardframe-utility.dir/build.make
 lib/libhardframe-utility.a: CMakeFiles/hardframe-utility.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library lib/libhardframe-utility.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library lib/libhardframe-utility.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/hardframe-utility.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hardframe-utility.dir/link.txt --verbose=$(VERBOSE)
 
