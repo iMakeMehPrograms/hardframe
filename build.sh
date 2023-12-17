@@ -38,7 +38,7 @@ fi
 
 if [[ "$dont_build" ]]
 then
-echo "WARNING: NOT BUILDING BINARY. ARGUMENT nobuild FOUND."
+echo "Skipping build process.."
 else
 echo "Building binary..."
 cmake --build build --target all
