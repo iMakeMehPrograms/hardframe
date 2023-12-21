@@ -1,14 +1,5 @@
-#define PI 3.141592f
-#define TAU 6.283184f
-
 namespace hf {
     namespace util {
-
-        // Casts
-        
-        template<typename T> T implicit_cast(T target) {
-            return target;
-        }
 
         // Spatial Structs
 
@@ -49,19 +40,6 @@ namespace hf {
         class quater {
             public:
                 float s, i, j, k;
-        };
-
-        // Loadable
-
-        class loadable {
-            private:
-                bool loaded = false;
-
-            public:
-                bool isLoaded();
-                bool load();
-
-                loadable();
         };
     }
 }

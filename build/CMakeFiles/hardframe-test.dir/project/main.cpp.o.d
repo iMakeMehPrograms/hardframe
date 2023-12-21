@@ -1,6 +1,6 @@
 CMakeFiles/hardframe-test.dir/project/main.cpp.o: \
   /Users/kprainey/Desktop/C++/hardframe/project/main.cpp \
-  /Users/kprainey/Desktop/C++/hardframe/hardframe/include/hardframe/utility/utility.hpp \
+  /Users/kprainey/Desktop/C++/hardframe/hardframe/include/hardframe/utility/general.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__assert \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/__config \

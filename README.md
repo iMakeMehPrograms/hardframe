@@ -11,3 +11,20 @@ Run build.sh with any of these arguments:
 - delete: Delete everything in the build folder to build from nothing. If you have this arg and build without the arg config it will fail.
 - nobuild: Skips the build proccess, useful for just executing the binary.
 - clean: Deletes .a files from static libraries. 
+
+## List of Libraries ##
+- Utility
+    - General: For general utilities such as casts and others
+        - hardframe-general-utility
+        - hardframe/utility/general.hpp
+    - Spatial: Spatial constructs such as vectors, rotations, and more
+        - hardframe-spatial-utility
+        - hardframe/utility/spatial.hpp
+    - Loadable: Base for asset-loaders, to have a standard way of doing things
+        - hardframe-load-utility
+        - hardframe/utility/loadable.hpp
+- Graphics
+    - OpenGL (3D)
+        - Base: Base 3D graphics with all the trappings one would expect in a game engine 
+            - hardframe-base-graphics
+            - hardframe/graphics/opgl/base.hpp

@@ -92,7 +92,7 @@ hardframe__test_EXTERNAL_OBJECTS =
 
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/project/main.cpp.o
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/build.make
-bin/hardframe-test: lib/libhardframe-utility.a
+bin/hardframe-test: lib/libhardframe-general-utility.a
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/hardframe-test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hardframe-test.dir/link.txt --verbose=$(VERBOSE)

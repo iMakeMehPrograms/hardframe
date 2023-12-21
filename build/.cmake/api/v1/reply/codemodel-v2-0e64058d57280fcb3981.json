@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "hardframe",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "hardframe-general-utility::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardframe-general-utility-de09d0ba1ce53bd10a28.json",
+					"name" : "hardframe-general-utility",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hardframe-load-utility::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardframe-load-utility-a281f60548cfc8309ce1.json",
+					"name" : "hardframe-load-utility",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hardframe-spatial-utility::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardframe-spatial-utility-c84138703269b4e802a9.json",
+					"name" : "hardframe-spatial-utility",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hardframe-test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hardframe-test-58889204403858d4cf0d.json",
+					"name" : "hardframe-test",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/kprainey/Desktop/C++/hardframe/build",
+		"source" : "/Users/kprainey/Desktop/C++/hardframe"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

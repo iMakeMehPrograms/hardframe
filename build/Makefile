@@ -117,17 +117,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hardframe-utility
+# Target rules for targets named hardframe-general-utility
 
 # Build rule for target.
-hardframe-utility: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-utility
-.PHONY : hardframe-utility
+hardframe-general-utility: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-general-utility
+.PHONY : hardframe-general-utility
 
 # fast build rule for target.
-hardframe-utility/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/build
-.PHONY : hardframe-utility/fast
+hardframe-general-utility/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-general-utility.dir/build.make CMakeFiles/hardframe-general-utility.dir/build
+.PHONY : hardframe-general-utility/fast
+
+#=============================================================================
+# Target rules for targets named hardframe-spatial-utility
+
+# Build rule for target.
+hardframe-spatial-utility: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-spatial-utility
+.PHONY : hardframe-spatial-utility
+
+# fast build rule for target.
+hardframe-spatial-utility/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-spatial-utility.dir/build.make CMakeFiles/hardframe-spatial-utility.dir/build
+.PHONY : hardframe-spatial-utility/fast
+
+#=============================================================================
+# Target rules for targets named hardframe-load-utility
+
+# Build rule for target.
+hardframe-load-utility: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-load-utility
+.PHONY : hardframe-load-utility
+
+# fast build rule for target.
+hardframe-load-utility/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-load-utility.dir/build.make CMakeFiles/hardframe-load-utility.dir/build
+.PHONY : hardframe-load-utility/fast
 
 #=============================================================================
 # Target rules for targets named hardframe-test
@@ -142,12 +168,36 @@ hardframe-test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-test.dir/build.make CMakeFiles/hardframe-test.dir/build
 .PHONY : hardframe-test/fast
 
+hardframe/source/utility/funcs/general.o: hardframe/source/utility/funcs/general.cpp.o
+.PHONY : hardframe/source/utility/funcs/general.o
+
+# target to build an object file
+hardframe/source/utility/funcs/general.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-general-utility.dir/build.make CMakeFiles/hardframe-general-utility.dir/hardframe/source/utility/funcs/general.cpp.o
+.PHONY : hardframe/source/utility/funcs/general.cpp.o
+
+hardframe/source/utility/funcs/general.i: hardframe/source/utility/funcs/general.cpp.i
+.PHONY : hardframe/source/utility/funcs/general.i
+
+# target to preprocess a source file
+hardframe/source/utility/funcs/general.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-general-utility.dir/build.make CMakeFiles/hardframe-general-utility.dir/hardframe/source/utility/funcs/general.cpp.i
+.PHONY : hardframe/source/utility/funcs/general.cpp.i
+
+hardframe/source/utility/funcs/general.s: hardframe/source/utility/funcs/general.cpp.s
+.PHONY : hardframe/source/utility/funcs/general.s
+
+# target to generate assembly for a file
+hardframe/source/utility/funcs/general.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-general-utility.dir/build.make CMakeFiles/hardframe-general-utility.dir/hardframe/source/utility/funcs/general.cpp.s
+.PHONY : hardframe/source/utility/funcs/general.cpp.s
+
 hardframe/source/utility/types/loadable.o: hardframe/source/utility/types/loadable.cpp.o
 .PHONY : hardframe/source/utility/types/loadable.o
 
 # target to build an object file
 hardframe/source/utility/types/loadable.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-load-utility.dir/build.make CMakeFiles/hardframe-load-utility.dir/hardframe/source/utility/types/loadable.cpp.o
 .PHONY : hardframe/source/utility/types/loadable.cpp.o
 
 hardframe/source/utility/types/loadable.i: hardframe/source/utility/types/loadable.cpp.i
@@ -155,7 +205,7 @@ hardframe/source/utility/types/loadable.i: hardframe/source/utility/types/loadab
 
 # target to preprocess a source file
 hardframe/source/utility/types/loadable.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-load-utility.dir/build.make CMakeFiles/hardframe-load-utility.dir/hardframe/source/utility/types/loadable.cpp.i
 .PHONY : hardframe/source/utility/types/loadable.cpp.i
 
 hardframe/source/utility/types/loadable.s: hardframe/source/utility/types/loadable.cpp.s
@@ -163,7 +213,7 @@ hardframe/source/utility/types/loadable.s: hardframe/source/utility/types/loadab
 
 # target to generate assembly for a file
 hardframe/source/utility/types/loadable.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/loadable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-load-utility.dir/build.make CMakeFiles/hardframe-load-utility.dir/hardframe/source/utility/types/loadable.cpp.s
 .PHONY : hardframe/source/utility/types/loadable.cpp.s
 
 hardframe/source/utility/types/transform.o: hardframe/source/utility/types/transform.cpp.o
@@ -171,7 +221,7 @@ hardframe/source/utility/types/transform.o: hardframe/source/utility/types/trans
 
 # target to build an object file
 hardframe/source/utility/types/transform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-spatial-utility.dir/build.make CMakeFiles/hardframe-spatial-utility.dir/hardframe/source/utility/types/transform.cpp.o
 .PHONY : hardframe/source/utility/types/transform.cpp.o
 
 hardframe/source/utility/types/transform.i: hardframe/source/utility/types/transform.cpp.i
@@ -179,7 +229,7 @@ hardframe/source/utility/types/transform.i: hardframe/source/utility/types/trans
 
 # target to preprocess a source file
 hardframe/source/utility/types/transform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-spatial-utility.dir/build.make CMakeFiles/hardframe-spatial-utility.dir/hardframe/source/utility/types/transform.cpp.i
 .PHONY : hardframe/source/utility/types/transform.cpp.i
 
 hardframe/source/utility/types/transform.s: hardframe/source/utility/types/transform.cpp.s
@@ -187,7 +237,7 @@ hardframe/source/utility/types/transform.s: hardframe/source/utility/types/trans
 
 # target to generate assembly for a file
 hardframe/source/utility/types/transform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-utility.dir/build.make CMakeFiles/hardframe-utility.dir/hardframe/source/utility/types/transform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-spatial-utility.dir/build.make CMakeFiles/hardframe-spatial-utility.dir/hardframe/source/utility/types/transform.cpp.s
 .PHONY : hardframe/source/utility/types/transform.cpp.s
 
 project/main.o: project/main.cpp.o
@@ -222,8 +272,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... hardframe-general-utility"
+	@echo "... hardframe-load-utility"
+	@echo "... hardframe-spatial-utility"
 	@echo "... hardframe-test"
-	@echo "... hardframe-utility"
+	@echo "... hardframe/source/utility/funcs/general.o"
+	@echo "... hardframe/source/utility/funcs/general.i"
+	@echo "... hardframe/source/utility/funcs/general.s"
 	@echo "... hardframe/source/utility/types/loadable.o"
 	@echo "... hardframe/source/utility/types/loadable.i"
 	@echo "... hardframe/source/utility/types/loadable.s"
