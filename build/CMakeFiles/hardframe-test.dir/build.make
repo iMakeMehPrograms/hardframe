@@ -93,6 +93,13 @@ hardframe__test_EXTERNAL_OBJECTS =
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/project/main.cpp.o
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/build.make
 bin/hardframe-test: lib/libhardframe-general-utility.a
+bin/hardframe-test: lib/libhardframe-base-graphics.a
+bin/hardframe-test: lib/libhardframe-spatial-utility.a
+bin/hardframe-test: lib/libhardframe-load-utility.a
+bin/hardframe-test: /usr/local/Cellar/sdl2/2.28.4/lib/libSDL2.dylib
+bin/hardframe-test: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL.tbd
+bin/hardframe-test: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL.tbd
+bin/hardframe-test: /usr/local/lib/libGLEW.2.2.0.dylib
 bin/hardframe-test: CMakeFiles/hardframe-test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/kprainey/Desktop/C++/hardframe/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable bin/hardframe-test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hardframe-test.dir/link.txt --verbose=$(VERBOSE)

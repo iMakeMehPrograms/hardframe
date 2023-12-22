@@ -61,6 +61,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/hardframe-general-utility.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-spatial-utility.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-load-utility.dir/DependInfo.cmake"
+  "CMakeFiles/hardframe-debug-utility.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-base-graphics.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-test.dir/DependInfo.cmake"
   )

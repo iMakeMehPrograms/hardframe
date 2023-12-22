@@ -39,6 +39,9 @@ namespace hf {
                 bool im
                 );
 
+                uint8_t init();
+
+                bool isInit();
         };
     }
 }

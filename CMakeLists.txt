@@ -23,19 +23,24 @@ find_package(GLEW REQUIRED)
 message(STATUS "SDL2 Found: ${SDL2_FOUND}")
 message(DEBUG "SDL2 Location: ${SDL2_INCLUDE_DIR}")
 message(DEBUG "SDL2 Libs: ${SDL2_LIBRARIES}")
+message(STATUS "")
 
 message(STATUS "OpenGL Found: ${OPENGL_FOUND}")
 message(DEBUG "OpenGL Location: ${OPENGL_INCLUDE_DIR}")
 message(DEBUG "OpenGL Libs: ${OPENGL_LIBRARIES}")
+message(STATUS "")
 
 message(STATUS "GLEW Found: ${GLEW_FOUND}")
 message(STATUS "GLEW Version: ${GLEW_VERSION}")
 message(DEBUG "GLEW Location: ${GLEW_INCLUDE_DIR}")
 message(DEBUG "GLEW Libs: ${GLEW_LIBRARIES}")
+message(STATUS "")
 
 # Local Libraries
 
 message(VERBOSE "Building Utilities...")
+message(VERBOSE "")
+
 # Utilities 
 # General Utilities
 add_library(${PROJECT_NAME}-general-utility STATIC)
@@ -67,7 +72,19 @@ target_sources(${PROJECT_NAME}-load-utility PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/types/loadable.cpp
 )
 
+# Debugging Utilities
+add_library(${PROJECT_NAME}-debug-utility STATIC)
+target_include_directories(${PROJECT_NAME}-debug-utility PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/include
+    # /usr/local/include/hardframe/utility/loadable.hpp
+)
+target_sources(${PROJECT_NAME}-debug-utility PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/funcs/debug.cpp
+)
+
 message(VERBOSE "Building Graphics...")
+message(VERBOSE "")
+
 # Graphics
 add_library(${PROJECT_NAME}-base-graphics STATIC)
 target_include_directories(${PROJECT_NAME}-base-graphics PUBLIC
@@ -78,11 +95,11 @@ target_sources(${PROJECT_NAME}-base-graphics PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/abstracts.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/assets.cpp
 )
-target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility)
+target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility ${PROJECT_NAME}-debug-utility)
 target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL::GLU GLEW::glew)
 
 # Binary Stuff
 add_executable(${PROJECT_NAME}-test project/main.cpp)
 
 # Add Libraries
-target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility)
+target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility ${PROJECT_NAME}-base-graphics)

@@ -779,7 +779,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "13.5"
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_OSX_SYSROOT",

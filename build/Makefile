@@ -156,6 +156,19 @@ hardframe-load-utility/fast:
 .PHONY : hardframe-load-utility/fast
 
 #=============================================================================
+# Target rules for targets named hardframe-debug-utility
+
+# Build rule for target.
+hardframe-debug-utility: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-debug-utility
+.PHONY : hardframe-debug-utility
+
+# fast build rule for target.
+hardframe-debug-utility/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-debug-utility.dir/build.make CMakeFiles/hardframe-debug-utility.dir/build
+.PHONY : hardframe-debug-utility/fast
+
+#=============================================================================
 # Target rules for targets named hardframe-base-graphics
 
 # Build rule for target.
@@ -228,6 +241,30 @@ hardframe/source/graphics/opgl/base/assets.s: hardframe/source/graphics/opgl/bas
 hardframe/source/graphics/opgl/base/assets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/assets.cpp.s
 .PHONY : hardframe/source/graphics/opgl/base/assets.cpp.s
+
+hardframe/source/utility/funcs/debug.o: hardframe/source/utility/funcs/debug.cpp.o
+.PHONY : hardframe/source/utility/funcs/debug.o
+
+# target to build an object file
+hardframe/source/utility/funcs/debug.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-debug-utility.dir/build.make CMakeFiles/hardframe-debug-utility.dir/hardframe/source/utility/funcs/debug.cpp.o
+.PHONY : hardframe/source/utility/funcs/debug.cpp.o
+
+hardframe/source/utility/funcs/debug.i: hardframe/source/utility/funcs/debug.cpp.i
+.PHONY : hardframe/source/utility/funcs/debug.i
+
+# target to preprocess a source file
+hardframe/source/utility/funcs/debug.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-debug-utility.dir/build.make CMakeFiles/hardframe-debug-utility.dir/hardframe/source/utility/funcs/debug.cpp.i
+.PHONY : hardframe/source/utility/funcs/debug.cpp.i
+
+hardframe/source/utility/funcs/debug.s: hardframe/source/utility/funcs/debug.cpp.s
+.PHONY : hardframe/source/utility/funcs/debug.s
+
+# target to generate assembly for a file
+hardframe/source/utility/funcs/debug.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-debug-utility.dir/build.make CMakeFiles/hardframe-debug-utility.dir/hardframe/source/utility/funcs/debug.cpp.s
+.PHONY : hardframe/source/utility/funcs/debug.cpp.s
 
 hardframe/source/utility/funcs/general.o: hardframe/source/utility/funcs/general.cpp.o
 .PHONY : hardframe/source/utility/funcs/general.o
@@ -334,6 +371,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hardframe-base-graphics"
+	@echo "... hardframe-debug-utility"
 	@echo "... hardframe-general-utility"
 	@echo "... hardframe-load-utility"
 	@echo "... hardframe-spatial-utility"
@@ -344,6 +382,9 @@ help:
 	@echo "... hardframe/source/graphics/opgl/base/assets.o"
 	@echo "... hardframe/source/graphics/opgl/base/assets.i"
 	@echo "... hardframe/source/graphics/opgl/base/assets.s"
+	@echo "... hardframe/source/utility/funcs/debug.o"
+	@echo "... hardframe/source/utility/funcs/debug.i"
+	@echo "... hardframe/source/utility/funcs/debug.s"
 	@echo "... hardframe/source/utility/funcs/general.o"
 	@echo "... hardframe/source/utility/funcs/general.i"
 	@echo "... hardframe/source/utility/funcs/general.s"
