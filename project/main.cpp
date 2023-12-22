@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) {
 
-    
-    
+    hf::opgl::window win(100, 100, "Tester", true);
+    win.close();
     return 0;
 }

@@ -54,7 +54,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks "
+					"fragment" : " -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.5 -F/Library/Developer/CommandLineTools/SDKs/MacOSX13.sdk/System/Library/Frameworks "
 				},
 				{
 					"fragment" : "-std=c++20"
@@ -101,19 +101,23 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "hardframe-load-utility::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "hardframe-debug-utility::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "hardframe-base-graphics::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "hardframe-general-utility::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,
 			"id" : "hardframe-spatial-utility::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "hardframe-load-utility::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "hardframe-base-graphics::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "hardframe-test::@6890427a1f51a3e7e1df",
@@ -156,6 +160,11 @@
 			{
 				"backtrace" : 3,
 				"fragment" : "lib/libhardframe-load-utility.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "lib/libhardframe-debug-utility.a",
 				"role" : "libraries"
 			},
 			{

@@ -1,7 +1,7 @@
 #include <hardframe/utility/debug.hpp>
 namespace hf {
     namespace util {
-        
+
         void defOutput(std::string message) {
             if(console_output) std::cout << message << std::endl;
         }
