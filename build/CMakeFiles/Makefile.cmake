@@ -24,6 +24,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Compiler/Clang.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Compiler/GNU.cmake"
+  "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/FeatureSummary.cmake"
+  "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/FindGLEW.cmake"
+  "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/FindOpenGL.cmake"
+  "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/FindPackageHandleStandardArgs.cmake"
+  "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/FindPackageMessage.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/Apple-AppleClang-C.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/Apple-Clang-C.cmake"
@@ -32,6 +37,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/Darwin-Initialize.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/Darwin.cmake"
   "/usr/local/Cellar/cmake/3.24.2/share/cmake/Modules/Platform/UnixPaths.cmake"
+  "/usr/local/lib/cmake/SDL2/sdl2-config-version.cmake"
+  "/usr/local/lib/cmake/SDL2/sdl2-config.cmake"
+  "/usr/local/lib/cmake/glew/CopyImportedTargetProperties.cmake"
+  "/usr/local/lib/cmake/glew/glew-config.cmake"
+  "/usr/local/lib/cmake/glew/glew-targets-release.cmake"
+  "/usr/local/lib/cmake/glew/glew-targets.cmake"
   )
 
 # The corresponding makefile is:
@@ -50,5 +61,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/hardframe-general-utility.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-spatial-utility.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-load-utility.dir/DependInfo.cmake"
+  "CMakeFiles/hardframe-base-graphics.dir/DependInfo.cmake"
   "CMakeFiles/hardframe-test.dir/DependInfo.cmake"
   )

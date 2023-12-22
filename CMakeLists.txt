@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.24.2 FATAL_ERROR)
 
+set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
+
 project(hardframe)
 set(PROJECT_VERSION 0.0)
 set(PROJECT_DESCRIPTION "Hardframe is a game and demo-making framework with 3d graphics, physics and more.")
@@ -13,8 +15,27 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# External Libraries
+find_package(SDL2 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(GLEW REQUIRED)
+
+message(STATUS "SDL2 Found: ${SDL2_FOUND}")
+message(DEBUG "SDL2 Location: ${SDL2_INCLUDE_DIR}")
+message(DEBUG "SDL2 Libs: ${SDL2_LIBRARIES}")
+
+message(STATUS "OpenGL Found: ${OPENGL_FOUND}")
+message(DEBUG "OpenGL Location: ${OPENGL_INCLUDE_DIR}")
+message(DEBUG "OpenGL Libs: ${OPENGL_LIBRARIES}")
+
+message(STATUS "GLEW Found: ${GLEW_FOUND}")
+message(STATUS "GLEW Version: ${GLEW_VERSION}")
+message(DEBUG "GLEW Location: ${GLEW_INCLUDE_DIR}")
+message(DEBUG "GLEW Libs: ${GLEW_LIBRARIES}")
+
 # Local Libraries
 
+message(VERBOSE "Building Utilities...")
 # Utilities 
 # General Utilities
 add_library(${PROJECT_NAME}-general-utility STATIC)
@@ -46,6 +67,7 @@ target_sources(${PROJECT_NAME}-load-utility PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/types/loadable.cpp
 )
 
+message(VERBOSE "Building Graphics...")
 # Graphics
 add_library(${PROJECT_NAME}-base-graphics STATIC)
 target_include_directories(${PROJECT_NAME}-base-graphics PUBLIC
@@ -56,6 +78,8 @@ target_sources(${PROJECT_NAME}-base-graphics PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/abstracts.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/assets.cpp
 )
+target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility)
+target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL::GLU GLEW::glew)
 
 # Binary Stuff
 add_executable(${PROJECT_NAME}-test project/main.cpp)

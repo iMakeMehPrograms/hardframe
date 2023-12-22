@@ -156,6 +156,19 @@ hardframe-load-utility/fast:
 .PHONY : hardframe-load-utility/fast
 
 #=============================================================================
+# Target rules for targets named hardframe-base-graphics
+
+# Build rule for target.
+hardframe-base-graphics: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hardframe-base-graphics
+.PHONY : hardframe-base-graphics
+
+# fast build rule for target.
+hardframe-base-graphics/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/build
+.PHONY : hardframe-base-graphics/fast
+
+#=============================================================================
 # Target rules for targets named hardframe-test
 
 # Build rule for target.
@@ -167,6 +180,54 @@ hardframe-test: cmake_check_build_system
 hardframe-test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-test.dir/build.make CMakeFiles/hardframe-test.dir/build
 .PHONY : hardframe-test/fast
+
+hardframe/source/graphics/opgl/base/abstracts.o: hardframe/source/graphics/opgl/base/abstracts.cpp.o
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.o
+
+# target to build an object file
+hardframe/source/graphics/opgl/base/abstracts.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/abstracts.cpp.o
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.cpp.o
+
+hardframe/source/graphics/opgl/base/abstracts.i: hardframe/source/graphics/opgl/base/abstracts.cpp.i
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.i
+
+# target to preprocess a source file
+hardframe/source/graphics/opgl/base/abstracts.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/abstracts.cpp.i
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.cpp.i
+
+hardframe/source/graphics/opgl/base/abstracts.s: hardframe/source/graphics/opgl/base/abstracts.cpp.s
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.s
+
+# target to generate assembly for a file
+hardframe/source/graphics/opgl/base/abstracts.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/abstracts.cpp.s
+.PHONY : hardframe/source/graphics/opgl/base/abstracts.cpp.s
+
+hardframe/source/graphics/opgl/base/assets.o: hardframe/source/graphics/opgl/base/assets.cpp.o
+.PHONY : hardframe/source/graphics/opgl/base/assets.o
+
+# target to build an object file
+hardframe/source/graphics/opgl/base/assets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/assets.cpp.o
+.PHONY : hardframe/source/graphics/opgl/base/assets.cpp.o
+
+hardframe/source/graphics/opgl/base/assets.i: hardframe/source/graphics/opgl/base/assets.cpp.i
+.PHONY : hardframe/source/graphics/opgl/base/assets.i
+
+# target to preprocess a source file
+hardframe/source/graphics/opgl/base/assets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/assets.cpp.i
+.PHONY : hardframe/source/graphics/opgl/base/assets.cpp.i
+
+hardframe/source/graphics/opgl/base/assets.s: hardframe/source/graphics/opgl/base/assets.cpp.s
+.PHONY : hardframe/source/graphics/opgl/base/assets.s
+
+# target to generate assembly for a file
+hardframe/source/graphics/opgl/base/assets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hardframe-base-graphics.dir/build.make CMakeFiles/hardframe-base-graphics.dir/hardframe/source/graphics/opgl/base/assets.cpp.s
+.PHONY : hardframe/source/graphics/opgl/base/assets.cpp.s
 
 hardframe/source/utility/funcs/general.o: hardframe/source/utility/funcs/general.cpp.o
 .PHONY : hardframe/source/utility/funcs/general.o
@@ -272,10 +333,17 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... hardframe-base-graphics"
 	@echo "... hardframe-general-utility"
 	@echo "... hardframe-load-utility"
 	@echo "... hardframe-spatial-utility"
 	@echo "... hardframe-test"
+	@echo "... hardframe/source/graphics/opgl/base/abstracts.o"
+	@echo "... hardframe/source/graphics/opgl/base/abstracts.i"
+	@echo "... hardframe/source/graphics/opgl/base/abstracts.s"
+	@echo "... hardframe/source/graphics/opgl/base/assets.o"
+	@echo "... hardframe/source/graphics/opgl/base/assets.i"
+	@echo "... hardframe/source/graphics/opgl/base/assets.s"
 	@echo "... hardframe/source/utility/funcs/general.o"
 	@echo "... hardframe/source/utility/funcs/general.i"
 	@echo "... hardframe/source/utility/funcs/general.s"
