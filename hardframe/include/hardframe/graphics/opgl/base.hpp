@@ -13,7 +13,7 @@ namespace hf {
         // Window
         class window {
             private:
-                bool open = false;
+                bool is_open = false;
                 const char* sdl_name;
 
             public:
@@ -33,10 +33,10 @@ namespace hf {
                 unsigned int width;
                 unsigned int height;
 
-                // Creates the window with default settings. W is for width, H for height, and IM if you want to immediately open the context and window or if you want to delay the initialization (true is immediate).
-                window(unsigned int w, unsigned int h, std::string nm, bool im);
+                // Creates the window with default settings. W is for width, H for height, nm for name
+                window(unsigned int w, unsigned int h, std::string nm);
 
-                // Creates the window. The first 4 variables are rgb+z depths, the next 2 are width+height, and the last one is if you want to immediately initialize the window or not (true is immediate).
+                // Creates the window. The first 4 variables are rgb+z depths, the next 2 are width+height, last one is the name
                 window(
                 unsigned int rb,
                 unsigned int gb,
@@ -44,18 +44,17 @@ namespace hf {
                 unsigned int db,
                 unsigned int w,
                 unsigned int h,
-                std::string nm,
-                bool im
+                std::string nm
                 );
 
                 ~window();
 
-                uint8_t init();
-
+                uint8_t open();
                 bool isOpen();
-
                 void close();
 
+                // Input. Get events has both a pass by copy and pass by reference. 
+                bool getEvent(SDL_Event *event);
                 SDL_Event getEvent();
                 uint8_t getKeys();
         };

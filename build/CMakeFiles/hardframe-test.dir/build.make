@@ -96,7 +96,6 @@ bin/hardframe-test: lib/libhardframe-general-utility.a
 bin/hardframe-test: lib/libhardframe-base-graphics.a
 bin/hardframe-test: lib/libhardframe-spatial-utility.a
 bin/hardframe-test: lib/libhardframe-load-utility.a
-bin/hardframe-test: lib/libhardframe-debug-utility.a
 bin/hardframe-test: /usr/local/Cellar/sdl2/2.28.4/lib/libSDL2.dylib
 bin/hardframe-test: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL.tbd
 bin/hardframe-test: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/Library/Frameworks/OpenGL.framework/OpenGL.tbd

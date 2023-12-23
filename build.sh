@@ -33,7 +33,7 @@ fi
 if [[ "$configure_cmake" ]]
 then
 echo "Generating config..."
-cmake -B build -S . -DCMAKE_INSTALL_PREFIX=install
+cmake -B build -S . -D CMAKE_INSTALL_PREFIX=install
 fi
 
 if [[ "$dont_build" ]]

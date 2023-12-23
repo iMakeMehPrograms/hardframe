@@ -4,16 +4,31 @@ namespace hf {
         // Window
 
         bool window::isOpen() {
-            return open;
+            return is_open;
         }
 
         void window::close() {
             SDL_DestroyWindow(sdl_win);
+            sdl_win = NULL;
+            is_open = false;
+            SDL_Quit();
         }
 
-        uint8_t window::init() {
+        bool window::getEvent(SDL_Event *event) {
+            return SDL_PollEvent( event );
+        }
+
+        SDL_Event window::getEvent() {
+            SDL_Event event;
+            SDL_PollEvent( &event );
+            return event;
+        }
+
+        uint8_t window::open() {
             Uint32 flags = SDL_WINDOW_OPENGL;
+            //SDL_open(SDL_open_EVENTS);
             sdl_win = SDL_CreateWindow(sdl_name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
+            std::cout << " testo " << std::endl;
 
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); // set to core version
             SDL_GL_SetAttribute(SDL_GL_RED_SIZE, rbits);
@@ -37,10 +52,11 @@ namespace hf {
             // Finally, make the screen black. glClearColor is already set soo...
             glClear(GL_COLOR_BUFFER_BIT);
             SDL_GL_SwapWindow(sdl_win);
+            is_open = true;
             return 0;
         }
 
-        window::window(unsigned int w, unsigned int h, std::string nm, bool im) : sdl_name(nm.c_str()) {
+        window::window(unsigned int w, unsigned int h, std::string nm) : sdl_name(nm.c_str()) {
             // Width and height
             width = w;
             height = h;
@@ -52,13 +68,9 @@ namespace hf {
             dbits = 16;
 
             name = nm;
-
-            if(im) {
-                init();
-            }
         }
 
-        window::window(unsigned int rb, unsigned int gb, unsigned int bb, unsigned int db, unsigned int w, unsigned int h, std::string nm, bool im) : sdl_name(nm.c_str()) {
+        window::window(unsigned int rb, unsigned int gb, unsigned int bb, unsigned int db, unsigned int w, unsigned int h, std::string nm) : sdl_name(nm.c_str()) {
             // Width and height
             width = w;
             height = h;
@@ -70,10 +82,6 @@ namespace hf {
             dbits = db;
 
             name = nm;
-
-            if(im) {
-                init();
-            }
         }
 
         window::~window() {

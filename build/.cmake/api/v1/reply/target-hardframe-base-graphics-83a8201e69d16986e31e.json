@@ -28,18 +28,6 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 89,
-				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 98,
-				"parent" : 0
-			},
-			{
-				"command" : 2,
-				"file" : 0,
 				"line" : 90,
 				"parent" : 0
 			},
@@ -50,9 +38,21 @@
 				"parent" : 0
 			},
 			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 91,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 100,
+				"parent" : 0
+			},
+			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 94,
+				"line" : 95,
 				"parent" : 0
 			}
 		]
@@ -111,15 +111,11 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "hardframe-load-utility::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
-			"id" : "hardframe-debug-utility::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 2,
 			"id" : "hardframe-spatial-utility::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "hardframe-load-utility::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "hardframe-base-graphics::@6890427a1f51a3e7e1df",
