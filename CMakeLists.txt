@@ -20,6 +20,10 @@ find_package(SDL2 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 
+set(glm_DIR /usr/local/lib/cmake/glm)
+find_package(glm REQUIRED)
+target_include_directories(glm::glm INTERFACE "/usr/local/include")
+
 message(STATUS "SDL2 Found: ${SDL2_FOUND}")
 message(DEBUG "SDL2 Location: ${SDL2_INCLUDE_DIR}")
 message(DEBUG "SDL2 Libs: ${SDL2_LIBRARIES}")
@@ -35,6 +39,11 @@ message(STATUS "GLEW Version: ${GLEW_VERSION}")
 message(DEBUG "GLEW Location: ${GLEW_INCLUDE_DIR}")
 message(DEBUG "GLEW Libs: ${GLEW_LIBRARIES}")
 message(STATUS "")
+
+message(STATUS "GLM Found: ${GLM_FOUND}")
+message(DEBUG "GLM Location: ${GLM_INCLUDE_DIRS}")
+message(STATUS "")
+
 
 # Local Libraries
 
@@ -61,6 +70,7 @@ target_include_directories(${PROJECT_NAME}-spatial-utility PUBLIC
 target_sources(${PROJECT_NAME}-spatial-utility PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/types/transform.cpp
 )
+target_link_libraries(${PROJECT_NAME}-spatial-utility glm::glm)
 
 # Loadable Utilities
 add_library(${PROJECT_NAME}-load-utility STATIC)
@@ -103,4 +113,4 @@ target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL
 add_executable(${PROJECT_NAME}-test project/main.cpp)
 
 # Add Libraries
-target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility ${PROJECT_NAME}-base-graphics)
+target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility ${PROJECT_NAME}-base-graphics glm::glm)
