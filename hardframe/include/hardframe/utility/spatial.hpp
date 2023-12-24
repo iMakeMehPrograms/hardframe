@@ -1,45 +1,20 @@
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
+
 namespace hf {
     namespace util {
 
-        // Spatial Structs
-
-        class vec3 {
+        class transform {
             public:
-                float x, y, z;
-            
-            vec3(float sx, float sy, float sz);
-            vec3();
+            glm::vec3 pos;
+            glm::vec3 rot;
+            glm::vec3 scale;
+
+            transform();
+            transform(glm::vec3 p, glm::vec3 r, glm::vec3 s);
         };
 
-        class transform3 {
-            public:
-                vec3 pos;
-                vec3 rot;
-                vec3 scale;
-            
-            transform3();
-        };
-
-        class vec2 {
-            public:
-                float x, y;
-            
-            vec2(float sx, float sy);
-            vec2();
-        };
-
-        class transform2 {
-            public:
-                vec2 pos;
-                vec2 rot;
-                vec2 scale;
-            
-            transform2();
-        };
-
-        class quater {
-            public:
-                float s, i, j, k;
-        };
     }
 }

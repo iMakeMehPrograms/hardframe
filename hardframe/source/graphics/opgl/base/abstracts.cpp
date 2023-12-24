@@ -1,8 +1,8 @@
 #include<hardframe/graphics/opgl/base.hpp>
 namespace hf {
     namespace opgl {
-        // Window
 
+        // Window
         bool window::isOpen() {
             return is_open;
         }
@@ -26,7 +26,7 @@ namespace hf {
 
         uint8_t window::open() {
             Uint32 flags = SDL_WINDOW_OPENGL;
-            //SDL_open(SDL_open_EVENTS);
+            SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
             sdl_win = SDL_CreateWindow(sdl_name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
             std::cout << " testo " << std::endl;
 
@@ -53,6 +53,8 @@ namespace hf {
             glClear(GL_COLOR_BUFFER_BIT);
             SDL_GL_SwapWindow(sdl_win);
             is_open = true;
+
+            SDL_GL_MakeCurrent(sdl_win, context);
             return 0;
         }
 
@@ -87,5 +89,10 @@ namespace hf {
         window::~window() {
             close();
         }
+
+
+
+        // Camera
+        
     }
 }

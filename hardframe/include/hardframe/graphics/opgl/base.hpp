@@ -2,7 +2,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
-//#include <hardframe/utility/debug.hpp>
+#include <hardframe/utility/spatial.hpp>
+
 #include <string>
 #include <iostream>
 #include <cstdlib>  
@@ -58,5 +59,25 @@ namespace hf {
                 SDL_Event getEvent();
                 uint8_t getKeys();
         };
+
+        // Camera
+        class camera {
+            public:
+                // Settings
+                float near;
+                float far;
+                float fov;
+
+                // Pos
+                util::transform trans;
+
+                // Build with defaults
+                camera(float fov, util::transform tr);
+
+                // Just think
+                camera(float near, float far, float fov, util::transform tr);
+        };
+
+
     }
 }
