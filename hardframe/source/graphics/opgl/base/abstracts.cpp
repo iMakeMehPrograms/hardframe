@@ -26,9 +26,15 @@ namespace hf {
 
         uint8_t window::open() {
             Uint32 flags = SDL_WINDOW_OPENGL;
-            SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO);
+
+            if(SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO) < 0) {
+                util::addMessage({"SDL initalization failed!", util::error_code::sdl_init_fail, util::log_level::fatal});
+            }
+
             sdl_win = SDL_CreateWindow(sdl_name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
-            std::cout << " testo " << std::endl;
+            if(sdl_win == NULL) {
+                util::addMessage({"SDL window didn't open!", util::error_code::sdl_window_fail, util::log_level::fatal});
+            }
 
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); // set to core version
             SDL_GL_SetAttribute(SDL_GL_RED_SIZE, rbits);
@@ -38,11 +44,16 @@ namespace hf {
             SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, true);
 
             context = SDL_GL_CreateContext(sdl_win);
+            if(context == NULL) {
+                util::addMessage({"SDL-GL context couldn't be made!", util::error_code::sdl_gl_context_null, util::log_level::fatal});
+            }
 
             // GLEW Setup
             glewExperimental = GL_TRUE;
             GLenum error = glewInit();
-            std::cout << glewGetErrorString(error) << std::endl;
+            if(error != GLEW_NO_ERROR) {
+                util::addMessage({"GLEW initalization failed!", util::error_code::glew_init_fail, util::log_level::message});
+            }
 
             // GL Setup
             glEnable(GL_DEPTH_TEST);
@@ -93,6 +104,6 @@ namespace hf {
 
 
         // Camera
-        
+
     }
 }

@@ -5,9 +5,13 @@
 build/CMakeFiles
 build/cmake_install.cmake
 build/CMakeCache.txt
+build/Makefile
 
 # Hardframe Resources (if installed)
 hardframe_resources/
+
+# Resource Folder
+files/
 
 # Annoying
 .DS_Store

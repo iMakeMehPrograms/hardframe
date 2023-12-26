@@ -83,15 +83,15 @@ target_sources(${PROJECT_NAME}-load-utility PRIVATE
 )
 
 # Debugging Utilities
-#add_library(${PROJECT_NAME}-debug-utility STATIC)
-#target_include_directories(
-#    ${PROJECT_NAME}-debug-utility PUBLIC
-#    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/include
-    # /usr/local/include/hardframe/utility/loadable.hpp
-#)
-#target_sources(${PROJECT_NAME}-debug-utility PRIVATE
-#    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/funcs/debug.cpp
-#)
+add_library(${PROJECT_NAME}-debug-utility STATIC)
+target_include_directories(
+    ${PROJECT_NAME}-debug-utility PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/include
+    /usr/local/include/hardframe/utility/loadable.hpp
+)
+target_sources(${PROJECT_NAME}-debug-utility PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/utility/funcs/debug.cpp
+)
 
 message(VERBOSE "Building Graphics...")
 message(VERBOSE "")
@@ -106,11 +106,11 @@ target_sources(${PROJECT_NAME}-base-graphics PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/abstracts.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/assets.cpp
 )
-target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility)
+target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility ${PROJECT_NAME}-debug-utility)
 target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL::GLU GLEW::glew)
 
 # Binary Stuff
 add_executable(${PROJECT_NAME}-test project/main.cpp)
 
 # Add Libraries
-target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility ${PROJECT_NAME}-base-graphics glm::glm)
+target_link_libraries(${PROJECT_NAME}-test PUBLIC ${PROJECT_NAME}-general-utility ${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-debug-utility)

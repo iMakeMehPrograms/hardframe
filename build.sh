@@ -48,6 +48,7 @@ if [[ "$cleanup" ]]
 then
 echo "Cleaning extra files..."
 rm ./build/lib/*.a
+rm ./files/error_log.hflog
 fi
 
 if [[ "$run_code" ]]

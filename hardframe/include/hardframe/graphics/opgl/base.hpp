@@ -3,10 +3,13 @@
 #include <SDL2/SDL_opengl.h>
 
 #include <hardframe/utility/spatial.hpp>
+#include <hardframe/utility/debug.hpp>
 
 #include <string>
 #include <iostream>
 #include <cstdlib>  
+
+#pragma once
 
 namespace hf {
     namespace opgl {
@@ -78,6 +81,31 @@ namespace hf {
                 camera(float near, float far, float fov, util::transform tr);
         };
 
+        struct mesh_data {
+            std::vector<float> points;
+            std::vector<unsigned int> groups;
+        };
+
+        // Vertex Array Object (yay!)
+        class mesh {
+            public:
+                // Handles
+                unsigned int vao;
+                unsigned int vbo;
+                unsigned int ebo;
+
+                mesh_data data;
+
+                mesh(mesh_data load);
+        };
+
+        /*class object {
+            public:
+                util::transform trans;
+                mesh &mesh;
+
+                object(mesh &mesh, util::transform trans);
+        };*/
 
     }
 }

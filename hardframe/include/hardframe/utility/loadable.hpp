@@ -1,3 +1,4 @@
+#pragma once
 namespace hf {
     namespace util {
         // Loadable

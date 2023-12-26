@@ -3,6 +3,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/string_cast.hpp>
 
+#pragma once
+
 namespace hf {
     namespace util {
 
