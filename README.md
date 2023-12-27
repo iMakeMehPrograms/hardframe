@@ -1,7 +1,7 @@
 # WIP VERSION: THIS VERSION IS IN DEVELOPMENT! #
 
 # hardframe #
-Hardframe is a framework for making games and demos with components for graphics, physics, and more. Hardframe is currently in very early development but expect more soon!
+Hardframe is a framework for making games and demos with components for graphics, physics, and more. Hardframe is currently in very early development but expect more soon! Make sure to give the [wiki a look,](https://github.com/iMakeMehPrograms/hardframe/wiki) or the [resources repo.](https://github.com/iMakeMehPrograms/hardframe_resources)
 
 ## Uses ##
 Demos, games, really anything that can use libraries for 3D graphics, fonts, physics, etc.
