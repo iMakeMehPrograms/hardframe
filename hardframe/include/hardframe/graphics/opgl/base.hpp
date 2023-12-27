@@ -86,6 +86,8 @@ namespace hf {
             std::vector<unsigned int> groups;
         };
 
+        void loadOBJ(mesh_data& storage);
+
         // Vertex Array Object (yay!)
         class mesh {
             public:
@@ -99,13 +101,10 @@ namespace hf {
                 mesh(mesh_data load);
         };
 
-        /*class object {
-            public:
-                util::transform trans;
-                mesh &mesh;
-
-                object(mesh &mesh, util::transform trans);
-        };*/
+        struct object {
+            util::transform trans;
+            mesh &mesh;
+        };
 
     }
 }

@@ -10,7 +10,7 @@ build/Makefile
 # Hardframe Resources (if installed)
 hardframe_resources/
 
-# Resource Folder
+# Local Resource Folder
 files/
 
 # Annoying

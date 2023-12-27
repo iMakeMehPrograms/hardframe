@@ -58,6 +58,9 @@ namespace hf {
             // GL Setup
             glEnable(GL_DEPTH_TEST);
 
+            glCullFace(GL_BACK);
+            glFrontFace(GL_CCW);
+
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
             // Finally, make the screen black. glClearColor is already set soo...

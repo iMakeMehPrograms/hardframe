@@ -7,6 +7,9 @@ Hardframe is a framework for making games and demos with components for graphics
 Demos, games, really anything that can use libraries for 3D graphics, fonts, physics, etc.
 
 ## How to Build ##
+- Install SDL2, GLEW, GLM, and CMake with your favorite package manager. 
+- Replace the path of glm_DIR with whereever you have it installed.
+- Replace the path of the error logs in build.sh with wherever you put them.
 Run build.sh with any of these arguments:
 - run: Execute the binary after finished
 - config: Configure cmake (adds the caches back)(useful for a complete reset)
