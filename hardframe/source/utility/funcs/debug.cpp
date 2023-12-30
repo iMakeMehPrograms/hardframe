@@ -68,5 +68,12 @@ namespace hf {
         bool messageRemaining() {
             return !debug_list.empty();
         }
+
+        std::string stringPlusCString(std::string str, const char * c_str) {
+            std::string temp = str;
+            std::string conv = c_str;
+            temp.append(conv);
+            return temp;
+        }
     }
 }

@@ -5,9 +5,16 @@
 #include <hardframe/utility/spatial.hpp>
 #include <hardframe/utility/debug.hpp>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/string_cast.hpp>
+
 #include <string>
 #include <iostream>
 #include <cstdlib>  
+#include <fstream>
+#include <sstream>
 
 #pragma once
 
@@ -65,20 +72,26 @@ namespace hf {
 
         // Camera
         class camera {
+
+            // These are just for the projection
+            glm::vec3 front;
+            glm::vec3 up;
+            glm::vec3 right;
+
             public:
                 // Settings
                 float near;
                 float far;
                 float fov;
 
-                // Pos
+                // Pos, ignores scale
                 util::transform trans;
 
                 // Build with defaults
-                camera(float fov, util::transform tr);
+                camera(float field, util::transform tr);
 
                 // Just think
-                camera(float near, float far, float fov, util::transform tr);
+                camera(float nr, float fr, float field, util::transform tr);
         };
 
         struct mesh_data {
@@ -101,9 +114,41 @@ namespace hf {
                 mesh(mesh_data load);
         };
 
+        class shader {
+            public:
+                unsigned int handle;
+                std::string vert_name;
+                std::string frag_name;
+
+                shader(std::string vn, std::string fn);
+        };
+
         struct object {
             util::transform trans;
             mesh &mesh;
+            shader &shade;
+        };
+
+        class renderer {
+            private:
+                bool wireframe;
+            public:
+                glm::mat4 model;
+                glm::mat4 view;
+                glm::mat4 proj;
+
+                // You know what you did. We all know.
+                renderer();
+
+                // Render an object
+                void renderObject(window& win, camera& cam, object& obj);
+
+                // Prepare to render a frame
+                void prepare();
+                // Push to window
+                void blit(window& win);
+
+                void wireframeSwitch(bool value);
         };
 
     }

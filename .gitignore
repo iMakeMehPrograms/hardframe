@@ -1,6 +1,9 @@
 # Hardframe Logging
 *.hflog
 
+# Libraries
+*.a
+
 # Build Stuffs
 build/CMakeFiles
 build/cmake_install.cmake
@@ -9,9 +12,6 @@ build/Makefile
 
 # Hardframe Resources (if installed)
 hardframe_resources/
-
-# Local Resource Folder
-files/
 
 # Annoying
 .DS_Store

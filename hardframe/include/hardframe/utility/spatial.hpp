@@ -8,14 +8,10 @@
 namespace hf {
     namespace util {
 
-        class transform {
-            public:
+        struct transform {
             glm::vec3 pos;
             glm::vec3 rot;
             glm::vec3 scale;
-
-            transform();
-            transform(glm::vec3 p, glm::vec3 r, glm::vec3 s);
         };
 
     }

@@ -10,6 +10,8 @@ namespace hf {
         enum error_code {
             // General
             non_error = 0,
+            searching = 1,
+            eldritch = 2,
 
             // Memory
             null_pointer = 64,
@@ -33,6 +35,10 @@ namespace hf {
             gl_table_too_large = 137,
 
             sdl_gl_context_null = 138,
+
+            shader_compile_issue = 139,
+            shaders_not_found = 140,
+            shader_linking_issue = 141,
 
             // Files & Parsing
             file_not_found = 192,
@@ -78,6 +84,8 @@ namespace hf {
         void addMessage(log message);
         void defOutput(log message);
         log takeMessage();
+
+        std::string stringPlusCString(std::string str, const char * c_str);
 
         bool messageRemaining();
     }

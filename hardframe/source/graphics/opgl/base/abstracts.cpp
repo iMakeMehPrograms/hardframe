@@ -57,9 +57,13 @@ namespace hf {
 
             // GL Setup
             glEnable(GL_DEPTH_TEST);
-
-            glCullFace(GL_BACK);
+            //glCullFace(GL_BACK);
             glFrontFace(GL_CCW);
+
+            //glEnable(GL_CULL_FACE);
+
+            glPolygonMode(GL_FRONT, GL_FILL);
+            glPolygonMode(GL_BACK, GL_LINE);
 
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -104,9 +108,35 @@ namespace hf {
             close();
         }
 
-
-
         // Camera
+        camera::camera(float field, util::transform tr) : fov(field), trans(tr) {};
 
+        camera::camera(float nr, float fr, float field, util::transform tr)  : near(nr), far(fr), fov(field), trans(tr) {};
+
+        // Renderer
+        renderer::renderer() : model(glm::mat4(1.0f)), view(glm::mat4(1.0f)), proj(glm::mat4(1.0f)), wireframe(false) {};
+
+        void renderer::renderObject(window& win, camera& cam, object& obj) {
+            glUseProgram(obj.shade.handle);
+            glBindVertexArray(obj.mesh.vao);
+            glDrawElements(GL_TRIANGLES, obj.mesh.data.groups.size(), GL_UNSIGNED_INT, 0);
+            glBindVertexArray(0);
+        }
+
+        void renderer::prepare() {
+            glClear(GL_DEPTH_BUFFER_BIT);
+        }
+
+        void renderer::blit(window& win) {
+            SDL_GL_SwapWindow(win.sdl_win);
+        }
+
+        void renderer::wireframeSwitch(bool value) {
+            if(value) {
+                glPolygonMode(GL_FRONT, GL_LINE);
+            } else {
+                glPolygonMode(GL_FRONT, GL_FILL);
+            }
+        }
     }
 }
