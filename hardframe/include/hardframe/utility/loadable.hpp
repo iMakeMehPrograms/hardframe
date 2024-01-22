@@ -4,7 +4,7 @@ namespace hf {
         // Loadable
 
         class loadable {
-            private:
+            protected:
                 bool loaded = false;
 
             public:

@@ -40,6 +40,9 @@ namespace hf {
             shaders_not_found = 140,
             shader_linking_issue = 141,
 
+            model_not_found = 142,
+            model_parse_error = 143,
+
             // Files & Parsing
             file_not_found = 192,
             token_unknown = 193,

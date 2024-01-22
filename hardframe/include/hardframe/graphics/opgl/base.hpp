@@ -4,6 +4,7 @@
 
 #include <hardframe/utility/spatial.hpp>
 #include <hardframe/utility/debug.hpp>
+#include <hardframe/utility/general.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -72,19 +73,13 @@ namespace hf {
 
         // Camera
         class camera {
-
-            // These are just for the projection
-            glm::vec3 front;
-            glm::vec3 up;
-            glm::vec3 right;
-
             public:
                 // Settings
                 float near;
                 float far;
                 float fov;
 
-                // Pos, ignores scale
+                // Scale is not used
                 util::transform trans;
 
                 // Build with defaults
@@ -99,7 +94,8 @@ namespace hf {
             std::vector<unsigned int> groups;
         };
 
-        void loadOBJ(mesh_data& storage);
+        // Loads a obj into the specified mesh_data 
+        void loadOBJ(mesh_data& storage, std::string filename);
 
         // Vertex Array Object (yay!)
         class mesh {
@@ -111,7 +107,9 @@ namespace hf {
 
                 mesh_data data;
 
-                mesh(mesh_data load);
+                mesh(mesh_data ldr_data);
+
+                bool load(mesh_data ldr_data);
         };
 
         class shader {
@@ -131,7 +129,10 @@ namespace hf {
 
         class renderer {
             private:
-                bool wireframe;
+                bool wireframe = false;
+                
+                // Default true because in scenes without skyboxes or other things it looks better
+                bool clear_color = true;
             public:
                 glm::mat4 model;
                 glm::mat4 view;
@@ -143,12 +144,29 @@ namespace hf {
                 // Render an object
                 void renderObject(window& win, camera& cam, object& obj);
 
-                // Prepare to render a frame
-                void prepare();
+                // Prepare to render a frame with a specific window and camera
+                void prepare(window& win, camera& cam);
+
                 // Push to window
                 void blit(window& win);
 
+                // Clears the depth buffer only, if you want to render things on top of another.
+                void redepth();
+
+                // Gets the model matrix from object
+                void setModelMatrix(object& obj);
+
+                // Gets the view matrix from the camera
+                void setViewMatrix(camera& cam);
+
+                // Gets the projection matrix from the camera
+                void setProjMatrix(window& win, camera& cam);
+
+                // Set wireframe mode
                 void wireframeSwitch(bool value);
+
+                // Set color-clearing mode
+                void colorSwitch(bool value);
         };
 
     }

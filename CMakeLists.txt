@@ -107,7 +107,7 @@ target_sources(${PROJECT_NAME}-base-graphics PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/abstracts.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/assets.cpp
 )
-target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility ${PROJECT_NAME}-debug-utility)
+target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility ${PROJECT_NAME}-debug-utility ${PROJECT_NAME}-general-utility)
 target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL::GLU GLEW::glew)
 
 # Binary Stuff

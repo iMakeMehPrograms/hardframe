@@ -10,28 +10,29 @@ int main(int argc, char *argv[]) {
     hf::opgl::window win(1000, 1000, "Tester");
     win.open();
 
-    hf::opgl::mesh tri({
-        {
-            0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 
-            0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 
-            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 
-            -0.5f,  0.5f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f
-        },
-        {
-            0, 1, 3,
-            1, 2, 3
-        }
-    });
+    hf::util::error_code test = hf::util::error_code::non_error;
+
+    hf::opgl::mesh_data ldr = {{}, {}};
+    hf::opgl::loadOBJ(ldr, "files/uvcube.obj");
+    hf::opgl::mesh tri(ldr);
 
     hf::opgl::shader flat("files/vert_testing.glsl", "files/frag_testing.glsl");
 
-    hf::opgl::camera cam(45.0f, {{0,0,0}, {0,0,0}, {1,1,1}});
-    hf::opgl::object tri_obj = {{{0,0,0}, {0,0,0}, {1,1,1}}, tri, flat};
+    hf::opgl::camera camera(45.0f, {{0,0,0}, {0,0,0}, {1,1,1}});
+    hf::opgl::object tri_obj = {{{0,0,-1}, {0,0,0}, {1,1,1}}, tri, flat};
     hf::opgl::renderer render = hf::opgl::renderer();
 
     hf::util::addMessage({"Entering loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});
 
     SDL_Event e;
+
+    render.prepare(win, camera);
+    render.renderObject(win, camera, tri_obj);
+    render.blit(win);
+
+    std::cout << glm::to_string(render.model) << std::endl;
+    std::cout << glm::to_string(render.view) << std::endl;
+    std::cout << glm::to_string(render.proj) << std::endl;
 
     while(win.isOpen()) {
         while(win.getEvent(&e)) {
@@ -42,10 +43,6 @@ int main(int argc, char *argv[]) {
             }
             if(!win.isOpen()) break;
         }
-
-        render.prepare();
-        render.renderObject(win, cam, tri_obj);
-        render.blit(win);
     }
 
     hf::util::addMessage({"Exiting loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});

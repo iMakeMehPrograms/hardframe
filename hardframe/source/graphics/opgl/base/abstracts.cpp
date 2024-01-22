@@ -119,16 +119,53 @@ namespace hf {
         void renderer::renderObject(window& win, camera& cam, object& obj) {
             glUseProgram(obj.shade.handle);
             glBindVertexArray(obj.mesh.vao);
+
+            glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iModel"), 1, GL_FALSE, glm::value_ptr(model));
+            glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iView"), 1, GL_FALSE, glm::value_ptr(view));
+            glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iProj"), 1, GL_FALSE, glm::value_ptr(proj));
+
             glDrawElements(GL_TRIANGLES, obj.mesh.data.groups.size(), GL_UNSIGNED_INT, 0);
             glBindVertexArray(0);
         }
 
-        void renderer::prepare() {
+        void renderer::prepare(window& win, camera& cam) {
             glClear(GL_DEPTH_BUFFER_BIT);
+            if(clear_color) glClear(GL_COLOR_BUFFER_BIT);
+            setViewMatrix(cam);
+            setProjMatrix(win, cam);
         }
 
         void renderer::blit(window& win) {
             SDL_GL_SwapWindow(win.sdl_win);
+        }
+
+        void renderer::redepth() {
+            glClear(GL_DEPTH_BUFFER_BIT);
+        }
+
+        void renderer::setModelMatrix(object& obj) {
+            model = glm::mat4(1.0f);
+            model = glm::translate(model, obj.trans.pos);
+
+            model = glm::rotate(model, glm::radians(obj.trans.rot.x), glm::vec3(1.0f, 0.0f, 0.0f));
+            model = glm::rotate(model, glm::radians(obj.trans.rot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+            model = glm::rotate(model, glm::radians(obj.trans.rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
+            model = glm::scale(model, obj.trans.scale);
+        }
+
+        void renderer::setViewMatrix(camera& cam) {
+            view = glm::mat4(1.0f);
+            view = glm::translate(view, cam.trans.pos);
+
+            view = glm::rotate(view, glm::radians(cam.trans.rot.x), glm::vec3(1.0f, 0.0f, 0.0f));
+            view = glm::rotate(view, glm::radians(cam.trans.rot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+            view = glm::rotate(view, glm::radians(cam.trans.rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
+        }
+
+        void renderer::setProjMatrix(window& win, camera& cam) {
+            proj = glm::mat4(1.0f);
+            proj = glm::perspective(glm::radians(cam.fov), util::implicit_cast<float>(win.width/win.height), cam.near, cam.far);
         }
 
         void renderer::wireframeSwitch(bool value) {
