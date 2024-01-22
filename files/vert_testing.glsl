@@ -9,5 +9,5 @@ uniform mat4 iProj;
 
 void main()
 {
-    gl_Position = iProj * iView * iModel * vec4(aPos, 1.0);
+    gl_Position = iProj * iView * iModel * vec4(aPos, 1.0f);
 }

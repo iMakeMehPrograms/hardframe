@@ -114,11 +114,13 @@ namespace hf {
         camera::camera(float nr, float fr, float field, util::transform tr)  : near(nr), far(fr), fov(field), trans(tr) {};
 
         // Renderer
-        renderer::renderer() : model(glm::mat4(1.0f)), view(glm::mat4(1.0f)), proj(glm::mat4(1.0f)), wireframe(false) {};
+        renderer::renderer() : model(1.0f), view(1.0f), proj(1.0f), wireframe(false), clear_color(true) {};
 
         void renderer::renderObject(window& win, camera& cam, object& obj) {
             glUseProgram(obj.shade.handle);
             glBindVertexArray(obj.mesh.vao);
+
+            setModelMatrix(obj);
 
             glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iModel"), 1, GL_FALSE, glm::value_ptr(model));
             glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iView"), 1, GL_FALSE, glm::value_ptr(view));
@@ -156,11 +158,12 @@ namespace hf {
 
         void renderer::setViewMatrix(camera& cam) {
             view = glm::mat4(1.0f);
-            view = glm::translate(view, cam.trans.pos);
 
             view = glm::rotate(view, glm::radians(cam.trans.rot.x), glm::vec3(1.0f, 0.0f, 0.0f));
             view = glm::rotate(view, glm::radians(cam.trans.rot.y), glm::vec3(0.0f, 1.0f, 0.0f));
             view = glm::rotate(view, glm::radians(cam.trans.rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
+
+            view = glm::translate(view, -cam.trans.pos);
         }
 
         void renderer::setProjMatrix(window& win, camera& cam) {

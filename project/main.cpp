@@ -18,22 +18,28 @@ int main(int argc, char *argv[]) {
 
     hf::opgl::shader flat("files/vert_testing.glsl", "files/frag_testing.glsl");
 
-    hf::opgl::camera camera(45.0f, {{0,0,0}, {0,0,0}, {1,1,1}});
-    hf::opgl::object tri_obj = {{{0,0,-1}, {0,0,0}, {1,1,1}}, tri, flat};
+    hf::opgl::camera camera(90.0f, {{0,0,0}, {0,0,0}, {1,1,1}});
+
+    hf::opgl::object tri_obj0 = {{{0,0,-10}, {10,3,0}, {1,1,1}}, tri, flat};
+    hf::opgl::object tri_obj1 = {{{5,2,-7}, {46,0,2}, {2,1,1}}, tri, flat};
+    hf::opgl::object tri_obj2 = {{{9,1,-20}, {6,9,2}, {1,2,1}}, tri, flat};
+    hf::opgl::object tri_obj3 = {{{8,8,-3}, {7,6,2}, {1,1,2}}, tri, flat};
+    hf::opgl::object tri_obj4 = {{{6,0,-7}, {4,2,2}, {2,2,2}}, tri, flat};
+
     hf::opgl::renderer render = hf::opgl::renderer();
 
     hf::util::addMessage({"Entering loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});
 
     SDL_Event e;
 
-    render.prepare(win, camera);
-    render.renderObject(win, camera, tri_obj);
-    render.blit(win);
+    const uint8_t* keymask;
+    float rot_sens = 0.01f;
+    float move_sens = 0.01f;
 
-    std::cout << glm::to_string(render.model) << std::endl;
-    std::cout << glm::to_string(render.view) << std::endl;
-    std::cout << glm::to_string(render.proj) << std::endl;
+    glm::vec3 rot_dir(0.0f);
+    glm::vec3 move_dir(0.0f);
 
+    int frame_relax = 0;
     while(win.isOpen()) {
         while(win.getEvent(&e)) {
             switch(e.type) {
@@ -43,6 +49,74 @@ int main(int argc, char *argv[]) {
             }
             if(!win.isOpen()) break;
         }
+
+        rot_dir = glm::vec3(0.0f);
+        move_dir = glm::vec3(0.0f);
+
+        keymask = SDL_GetKeyboardState(NULL);
+
+        if(keymask[SDL_SCANCODE_ESCAPE]) {
+            win.close();
+            break;
+        }
+
+        if(keymask[SDL_SCANCODE_I]) {
+            rot_dir.x += rot_sens;
+        }
+        if(keymask[SDL_SCANCODE_K]) {
+            rot_dir.x -= rot_sens;
+        }
+        if(keymask[SDL_SCANCODE_J]) {
+            rot_dir.y += rot_sens;
+        }
+        if(keymask[SDL_SCANCODE_L]) {
+            rot_dir.y -= rot_sens;
+        }
+
+        if(keymask[SDL_SCANCODE_W]) {
+            move_dir.y += move_sens;
+        }
+        if(keymask[SDL_SCANCODE_S]) {
+            move_dir.y -= move_sens;
+        }
+        if(keymask[SDL_SCANCODE_A]) {
+            move_dir.x += move_sens;
+        }
+        if(keymask[SDL_SCANCODE_D]) {
+            move_dir.x -= move_sens;
+        }
+
+        if(keymask[SDL_SCANCODE_Q]) {
+            move_dir.z += move_sens;
+        }
+        if(keymask[SDL_SCANCODE_E]) {
+            move_dir.z -= move_sens;
+        }
+
+        if(keymask[SDL_SCANCODE_SPACE]) {
+            if(frame_relax == 0) {
+                hf::util::addMessage({glm::to_string(camera.trans.pos), hf::util::error_code::non_error, hf::util::log_level::debug});
+                hf::util::addMessage({glm::to_string(camera.trans.rot), hf::util::error_code::non_error, hf::util::log_level::debug});
+                frame_relax = 2000;
+            }
+        }
+
+        if(frame_relax != 0) {
+            frame_relax -= 1;
+        }
+
+        camera.trans.pos += move_dir;
+        camera.trans.rot += rot_dir;
+
+        render.prepare(win, camera);
+
+        render.renderObject(win, camera, tri_obj0);
+        render.renderObject(win, camera, tri_obj1);
+        render.renderObject(win, camera, tri_obj2);
+        render.renderObject(win, camera, tri_obj3);
+        render.renderObject(win, camera, tri_obj4);
+
+        render.blit(win);
     }
 
     hf::util::addMessage({"Exiting loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});
