@@ -155,23 +155,20 @@ namespace hf {
 
         void renderer::setModelMatrix(object& obj) {
             model = glm::mat4(1.0f);
-            model = glm::translate(model, obj.trans.pos);
-
-            model = glm::rotate(model, glm::radians(obj.trans.rot.x), glm::vec3(1.0f, 0.0f, 0.0f));
-            model = glm::rotate(model, glm::radians(obj.trans.rot.y), glm::vec3(0.0f, 1.0f, 0.0f));
-            model = glm::rotate(model, glm::radians(obj.trans.rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
 
             model = glm::scale(model, obj.trans.scale);
+
+            model = glm::mat4_cast(obj.trans.rot) * model;
+
+            model = glm::translate(model, obj.trans.pos);
         }
 
         void renderer::setViewMatrix(camera& cam) {
             view = glm::mat4(1.0f);
 
-            view = glm::rotate(view, glm::radians(cam.trans.rot.x), glm::vec3(1.0f, 0.0f, 0.0f));
-            view = glm::rotate(view, glm::radians(cam.trans.rot.y), glm::vec3(0.0f, 1.0f, 0.0f));
-            view = glm::rotate(view, glm::radians(cam.trans.rot.z), glm::vec3(0.0f, 0.0f, 1.0f));
+            view = glm::mat4_cast(cam.trans.rot) * view;
 
-            view = glm::translate(view, -cam.trans.pos);
+            view = glm::translate(view, cam.trans.pos);
         }
 
         void renderer::setProjMatrix(window& win, camera& cam) {

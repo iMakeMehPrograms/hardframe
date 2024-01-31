@@ -25,13 +25,13 @@ int main(int argc, char *argv[]) {
 
     hf::opgl::shader flat("files/vert_testing.glsl", "files/frag_testing.glsl");
 
-    hf::opgl::camera camera(90.0f, {{0,0,0}, {0,0,0}, {1,1,1}});
+    hf::opgl::camera camera(90.0f, {{0,0,-100}, hf::util::eulerToQuat({0,0,0}), {1,1,1}});
 
-    hf::opgl::object tri_obj0 = {{{0,0,-10}, {10,3,0}, {1,1,1}}, tri, flat};
-    hf::opgl::object tri_obj1 = {{{5,2,-7}, {46,0,2}, {2,1,1}}, tri, flat};
-    hf::opgl::object tri_obj2 = {{{9,1,-20}, {6,9,2}, {1,2,1}}, tri, flat};
-    hf::opgl::object tri_obj3 = {{{8,8,-3}, {7,6,2}, {1,1,2}}, tri, flat};
-    hf::opgl::object tri_obj4 = {{{6,0,-7}, {4,2,2}, {2,2,2}}, tri, flat};
+    hf::opgl::object tri_obj0 = {{{0,0,-10}, hf::util::eulerToQuat({10,3,0}), {1,1,1}}, tri, flat};
+    hf::opgl::object tri_obj1 = {{{5,2,-7}, hf::util::eulerToQuat({46,0,2}), {2,1,1}}, tri, flat};
+    hf::opgl::object tri_obj2 = {{{9,1,-20}, hf::util::eulerToQuat({6,9,2}), {1,2,1}}, tri, flat};
+    hf::opgl::object tri_obj3 = {{{8,8,-3}, hf::util::eulerToQuat({7,6,2}), {1,1,2}}, tri, flat};
+    hf::opgl::object tri_obj4 = {{{6,0,-7}, hf::util::eulerToQuat({4,2,2}), {2,2,2}}, tri, flat};
 
     hf::opgl::renderer render = hf::opgl::renderer();
 
@@ -102,8 +102,7 @@ int main(int argc, char *argv[]) {
 
         if(keymask[SDL_SCANCODE_SPACE]) {
             if(frame_relax == 0) {
-                hf::util::addMessage({glm::to_string(camera.trans.pos), hf::util::error_code::non_error, hf::util::log_level::debug});
-                hf::util::addMessage({glm::to_string(camera.trans.rot), hf::util::error_code::non_error, hf::util::log_level::debug});
+                hf::util::addMessage({glm::to_string(render.model), hf::util::error_code::non_error, hf::util::log_level::debug});
                 frame_relax = 2000;
             }
         }
@@ -113,7 +112,7 @@ int main(int argc, char *argv[]) {
         }
 
         camera.trans.pos += move_dir;
-        camera.trans.rot += rot_dir;
+        hf::util::addRotationCompound(rot_dir, camera.trans);
 
         render.prepare(win, camera);
 

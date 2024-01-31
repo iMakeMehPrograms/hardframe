@@ -17,9 +17,20 @@ namespace hf {
 
         struct transform {
             glm::vec3 pos;
-            glm::vec3 rot;
+            glm::quat rot;
             glm::vec3 scale;
         };
+
+        void localizeToRotation(glm::vec3 &vec, transform &trans);
+        void localizeToPosition(glm::vec3 &vec, transform &trans);
+
+        void setRotationAxis(float angle, glm::vec3 &axis, transform &trans);
+        void addRotationAxis(float angle, glm::vec3 &axis, transform &trans);
+
+        void setRotationCompound(glm::vec3 &euler, transform &trans);
+        void addRotationCompound(glm::vec3 &euler, transform &trans);
+
+        glm::quat eulerToQuat(glm::vec3 euler);
 
     }
 }
