@@ -109,19 +109,21 @@ namespace hf {
                         while(getline(subtokenizer, subtoken, '/')) {
                             subtokens.push_back(subtoken);
                         }
-                        storage.groups.push_back(std::stoi(subtokens[0]) - 1);
 
-                        points[std::stoi(subtokens[0]) - 1][6] = uvs[std::stoi(subtokens[1]) - 1][0];
-                        points[std::stoi(subtokens[0]) - 1][7] = uvs[std::stoi(subtokens[1]) - 1][1];
+                        int row = std::stoi(subtokens[0]) - 1;
+                        storage.groups.push_back(row);
+
+                        points[row][6] = uvs[std::stoi(subtokens[1]) - 1][0];
+                        points[row][7] = uvs[std::stoi(subtokens[1]) - 1][1];
                         
-                        points[std::stoi(subtokens[0]) - 1][3] = norms[std::stoi(subtokens[2]) - 1][0];
-                        points[std::stoi(subtokens[0]) - 1][4] = norms[std::stoi(subtokens[2]) - 1][1];
-                        points[std::stoi(subtokens[0]) - 1][5] = norms[std::stoi(subtokens[2]) - 1][2];
+                        points[row][3] = norms[std::stoi(subtokens[2]) - 1][0];
+                        points[row][4] = norms[std::stoi(subtokens[2]) - 1][1];
+                        points[row][5] = norms[std::stoi(subtokens[2]) - 1][2];
                     }
                 }
             }
             for(size_t i = 0; i < points.size(); i++) {
-                for(size_t e = 0; e < points[0].size(); e++) {
+                for(size_t e = 0; e < points[1].size(); e++) {
                     storage.points.push_back(points[i][e]);
                 }
             }

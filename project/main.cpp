@@ -26,12 +26,14 @@ int main(int argc, char *argv[]) {
     hf::opgl::image stone_albedo("files/stonemix_eb_reg.png");
     hf::opgl::material stone = {stone_albedo};
 
-    hf::opgl::shader flat("files/vert_testing.glsl", "files/frag_testing.glsl");
+    hf::opgl::shader flat("files/shaders/vert_testing2.glsl", "files/shaders/frag_testing2.glsl");
     hf::opgl::camera camera(45.0f, {{0,0,10}, hf::util::eulerToQuat({0,0,0}), {1, 1, 1}});
     camera.ortho = false;
 
+    hf::opgl::object block = {{{0,0,0}, hf::util::eulerToQuat({15, 15, 15}), {1, 1, 1}}, cube, flat, stone};
     hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, stone};
     hf::opgl::renderer render = hf::opgl::renderer();
+    render.colorSwitch(true);
 
     hf::util::addMessage({"Entering loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});
 
@@ -108,12 +110,14 @@ int main(int argc, char *argv[]) {
             frame_relax -= 1;
         }
 
+        hf::util::localizeToRotation(move_dir, camera.trans);
         camera.trans.pos += move_dir;
         hf::util::addRotationCompound(rot_dir, camera.trans);
 
         render.prepare(win, camera);
 
         render.renderObject(win, camera, ground);
+        render.renderObject(win, camera, block);
 
         render.blit(win);
     }

@@ -130,6 +130,7 @@ namespace hf {
 
             setModelMatrix(obj);
 
+            glUniform1i(glGetUniformLocation(obj.shade.handle, "iAlbedo"), 0);
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, obj.mat.albedo.handle);
 
@@ -189,5 +190,9 @@ namespace hf {
                 glPolygonMode(GL_FRONT, GL_FILL);
             }
         }
+
+        void renderer::colorSwitch(bool value) {
+            clear_color = value;
+        } 
     }
 }

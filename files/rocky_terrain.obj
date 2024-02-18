@@ -1,6 +1,5 @@
 # Blender v2.93.1 OBJ File: 'rocky_terrain.blend'
 # www.blender.org
-mtllib rocky_terrain.mtl
 o Plane
 v -4.986042 0.006731 5.030121
 v 5.019200 -0.005316 5.003785
@@ -1092,7 +1091,6 @@ vn 0.0906 0.9831 -0.1588
 vn 0.1398 0.9902 -0.0029
 vn -0.2558 0.9658 -0.0425
 vn -0.1620 0.9665 -0.1988
-usemtl None
 s off
 f 84/1/1 141/2/1 289/3/1
 f 90/4/2 137/5/2 288/6/2
