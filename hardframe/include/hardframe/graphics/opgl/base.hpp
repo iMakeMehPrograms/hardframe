@@ -5,6 +5,8 @@
     https://github.com/iMakeMehPrograms/hardframe/tree/main?tab=BSD-3-Clause-1-ov-file
 */
 
+#pragma once
+
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
@@ -23,8 +25,6 @@
 #include <cstdlib>  
 #include <fstream>
 #include <sstream>
-
-#pragma once
 
 namespace hf {
     namespace opgl {
@@ -86,6 +86,9 @@ namespace hf {
                 float far;
                 float fov;
 
+                // True for an orthographic projection
+                bool ortho;
+
                 // Scale is not used
                 util::transform trans;
 
@@ -128,10 +131,27 @@ namespace hf {
                 shader(std::string vn, std::string fn);
         };
 
+        class image {
+            public:
+                std::string name;
+                unsigned int handle;
+                unsigned int width;
+                unsigned int height;
+                unsigned int channels;
+
+                image(std::string imn);
+        };
+
+        struct material {
+            public:
+                image &albedo;
+        };
+
         struct object {
             util::transform trans;
             mesh &mesh;
             shader &shade;
+            material &mat;
         };
 
         class renderer {

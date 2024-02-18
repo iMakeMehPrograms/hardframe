@@ -17,22 +17,20 @@ int main(int argc, char *argv[]) {
     hf::opgl::window win(1000, 1000, "Tester");
     win.open();
 
-    hf::util::error_code test = hf::util::error_code::non_error;
-
     hf::opgl::mesh_data ldr = {{}, {}};
     hf::opgl::loadOBJ(ldr, "files/uvcube.obj");
-    hf::opgl::mesh tri(ldr);
+    hf::opgl::mesh cube(ldr);
+    hf::opgl::loadOBJ(ldr, "files/rocky_terrain.obj");
+    hf::opgl::mesh terrain(ldr);
+
+    hf::opgl::image stone_albedo("files/stonemix_eb_reg.png");
+    hf::opgl::material stone = {stone_albedo};
 
     hf::opgl::shader flat("files/vert_testing.glsl", "files/frag_testing.glsl");
+    hf::opgl::camera camera(45.0f, {{0,0,10}, hf::util::eulerToQuat({0,0,0}), {1, 1, 1}});
+    camera.ortho = false;
 
-    hf::opgl::camera camera(90.0f, {{0,0,-100}, hf::util::eulerToQuat({0,0,0}), {1,1,1}});
-
-    hf::opgl::object tri_obj0 = {{{0,0,-10}, hf::util::eulerToQuat({10,3,0}), {1,1,1}}, tri, flat};
-    hf::opgl::object tri_obj1 = {{{5,2,-7}, hf::util::eulerToQuat({46,0,2}), {2,1,1}}, tri, flat};
-    hf::opgl::object tri_obj2 = {{{9,1,-20}, hf::util::eulerToQuat({6,9,2}), {1,2,1}}, tri, flat};
-    hf::opgl::object tri_obj3 = {{{8,8,-3}, hf::util::eulerToQuat({7,6,2}), {1,1,2}}, tri, flat};
-    hf::opgl::object tri_obj4 = {{{6,0,-7}, hf::util::eulerToQuat({4,2,2}), {2,2,2}}, tri, flat};
-
+    hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, stone};
     hf::opgl::renderer render = hf::opgl::renderer();
 
     hf::util::addMessage({"Entering loop.", hf::util::error_code::non_error, hf::util::log_level::verbose});
@@ -102,7 +100,6 @@ int main(int argc, char *argv[]) {
 
         if(keymask[SDL_SCANCODE_SPACE]) {
             if(frame_relax == 0) {
-                hf::util::addMessage({glm::to_string(render.model), hf::util::error_code::non_error, hf::util::log_level::debug});
                 frame_relax = 2000;
             }
         }
@@ -116,11 +113,7 @@ int main(int argc, char *argv[]) {
 
         render.prepare(win, camera);
 
-        render.renderObject(win, camera, tri_obj0);
-        render.renderObject(win, camera, tri_obj1);
-        render.renderObject(win, camera, tri_obj2);
-        render.renderObject(win, camera, tri_obj3);
-        render.renderObject(win, camera, tri_obj4);
+        render.renderObject(win, camera, ground);
 
         render.blit(win);
     }

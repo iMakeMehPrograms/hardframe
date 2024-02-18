@@ -45,8 +45,14 @@ message(STATUS "GLM Found: ${GLM_FOUND}")
 message(DEBUG "GLM Location: ${GLM_INCLUDE_DIRS}")
 message(STATUS "")
 
+message(VERBOSE "Building externs...")
+message(VERBOSE "")
 
-# Local Libraries
+# Extern-Local Libraries
+add_library(nothings-stb INTERFACE)
+target_include_directories(nothings-stb INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR}/extern/stb/include
+)
 
 message(VERBOSE "Building Utilities...")
 message(VERBOSE "")
@@ -108,6 +114,7 @@ target_sources(${PROJECT_NAME}-base-graphics PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/source/graphics/opgl/base/assets.cpp
 )
 target_link_libraries(${PROJECT_NAME}-base-graphics ${PROJECT_NAME}-spatial-utility ${PROJECT_NAME}-load-utility ${PROJECT_NAME}-debug-utility ${PROJECT_NAME}-general-utility)
+target_link_libraries(${PROJECT_NAME}-base-graphics nothings-stb)
 target_link_libraries(${PROJECT_NAME}-base-graphics SDL2::SDL2 OpenGL::GL OpenGL::GLU GLEW::glew)
 
 # Binary Stuff

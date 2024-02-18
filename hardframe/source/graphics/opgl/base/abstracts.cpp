@@ -117,9 +117,9 @@ namespace hf {
         }
 
         // Camera
-        camera::camera(float field, util::transform tr) : fov(field), trans(tr) {};
+        camera::camera(float field, util::transform tr) : fov(field), trans(tr), near(0.1f), far(1024.0f), ortho(false) {};
 
-        camera::camera(float nr, float fr, float field, util::transform tr)  : near(nr), far(fr), fov(field), trans(tr) {};
+        camera::camera(float nr, float fr, float field, util::transform tr)  : near(nr), far(fr), fov(field), trans(tr), ortho(false) {};
 
         // Renderer
         renderer::renderer() : model(1.0f), view(1.0f), proj(1.0f), wireframe(false), clear_color(true) {};
@@ -129,6 +129,9 @@ namespace hf {
             glBindVertexArray(obj.mesh.vao);
 
             setModelMatrix(obj);
+
+            glActiveTexture(GL_TEXTURE0);
+            glBindTexture(GL_TEXTURE_2D, obj.mat.albedo.handle);
 
             glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iModel"), 1, GL_FALSE, glm::value_ptr(model));
             glUniformMatrix4fv(glGetUniformLocation(obj.shade.handle, "iView"), 1, GL_FALSE, glm::value_ptr(view));
@@ -156,24 +159,27 @@ namespace hf {
         void renderer::setModelMatrix(object& obj) {
             model = glm::mat4(1.0f);
 
-            model = glm::scale(model, obj.trans.scale);
-
-            model = glm::mat4_cast(obj.trans.rot) * model;
-
             model = glm::translate(model, obj.trans.pos);
+            model = glm::mat4_cast(obj.trans.rot) * model;
+            model = glm::scale(model, obj.trans.scale);
         }
 
         void renderer::setViewMatrix(camera& cam) {
             view = glm::mat4(1.0f);
 
+            view = glm::translate(view, -cam.trans.pos);
             view = glm::mat4_cast(cam.trans.rot) * view;
-
-            view = glm::translate(view, cam.trans.pos);
+            view = glm::scale(view, glm::vec3(1.0f/cam.trans.scale.x, 1.0f/cam.trans.scale.y, 1.0f/cam.trans.scale.z));
         }
 
         void renderer::setProjMatrix(window& win, camera& cam) {
             proj = glm::mat4(1.0f);
-            proj = glm::perspective(glm::radians(cam.fov), util::implicit_cast<float>(win.width/win.height), cam.near, cam.far);
+
+            if(!cam.ortho) {
+                proj = glm::perspective(glm::radians(cam.fov), util::implicit_cast<float>(win.width)/util::implicit_cast<float>(win.height), cam.near, cam.far);
+            } else {
+                proj = glm::ortho(0.0f, util::implicit_cast<float>(win.width), 0.0f, util::implicit_cast<float>(win.height), cam.near, cam.far);
+            }
         }
 
         void renderer::wireframeSwitch(bool value) {
