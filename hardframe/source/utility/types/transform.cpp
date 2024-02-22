@@ -25,9 +25,10 @@ namespace hf {
         }
 
         void setRotationCompound(glm::vec3 &euler, transform &trans) {
-            trans.rot = trans.rot * glm::angleAxis(glm::radians(euler.x), glm::vec3(1.0f, 0.0f, 0.0f));
-            trans.rot = trans.rot * glm::angleAxis(glm::radians(euler.y), glm::vec3(0.0, 1.0f, 0.0f));
-            trans.rot = trans.rot * glm::angleAxis(glm::radians(euler.z), glm::vec3(0.0, 0.0f, 1.0f));
+            trans.rot = glm::quat(euler);
+            /*trans.rot = glm::angleAxis(glm::radians(euler.x), glm::vec3(1.0f, 0.0f, 0.0f));
+            trans.rot = glm::angleAxis(glm::radians(euler.y), glm::vec3(0.0, 1.0f, 0.0f));
+            trans.rot = glm::angleAxis(glm::radians(euler.z), glm::vec3(0.0, 0.0f, 1.0f));*/
         }
         void addRotationCompound(glm::vec3 &euler, transform &trans) {
             trans.rot = trans.rot * glm::angleAxis(glm::radians(euler.x), glm::vec3(1.0f, 0.0f, 0.0f) * trans.rot);

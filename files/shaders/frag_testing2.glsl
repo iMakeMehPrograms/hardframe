@@ -7,5 +7,5 @@ out vec4 FragColor;
 
 void main()
 {
-    FragColor = texture(iAlbedo, pUV+0.5);
+    FragColor = vec4(pUV, 0.0f, 1.0f);
 } 

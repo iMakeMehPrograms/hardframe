@@ -26,12 +26,14 @@ int main(int argc, char *argv[]) {
     hf::opgl::image stone_albedo("files/stonemix_eb_reg.png");
     hf::opgl::material stone = {stone_albedo};
 
+    hf::opgl::image moss_albedo("files/moss.png");
+    hf::opgl::material moss = {moss_albedo};
+
     hf::opgl::shader flat("files/shaders/vert_testing2.glsl", "files/shaders/frag_testing2.glsl");
     hf::opgl::camera camera(45.0f, {{0,0,10}, hf::util::eulerToQuat({0,0,0}), {1, 1, 1}});
-    camera.ortho = false;
 
-    hf::opgl::object block = {{{0,0,0}, hf::util::eulerToQuat({15, 15, 15}), {1, 1, 1}}, cube, flat, stone};
-    hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, stone};
+    hf::opgl::object block = {{{0,0,0}, hf::util::eulerToQuat({0, 0, 0}), {1, 1, 1}}, cube, flat, moss};
+    hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, moss};
     hf::opgl::renderer render = hf::opgl::renderer();
     render.colorSwitch(true);
 
@@ -40,7 +42,7 @@ int main(int argc, char *argv[]) {
     SDL_Event e;
 
     const uint8_t* keymask;
-    float rot_sens = 0.01f;
+    float rot_sens = 0.015f;
     float move_sens = 0.01f;
 
     glm::vec3 rot_dir(0.0f);
@@ -68,10 +70,10 @@ int main(int argc, char *argv[]) {
         }
 
         if(keymask[SDL_SCANCODE_I]) {
-            rot_dir.x += rot_sens;
+            rot_dir.x -= rot_sens;
         }
         if(keymask[SDL_SCANCODE_K]) {
-            rot_dir.x -= rot_sens;
+            rot_dir.x += rot_sens;
         }
         if(keymask[SDL_SCANCODE_J]) {
             rot_dir.y += rot_sens;
@@ -87,10 +89,10 @@ int main(int argc, char *argv[]) {
             move_dir.y -= move_sens;
         }
         if(keymask[SDL_SCANCODE_A]) {
-            move_dir.x += move_sens;
+            move_dir.x -= move_sens;
         }
         if(keymask[SDL_SCANCODE_D]) {
-            move_dir.x -= move_sens;
+            move_dir.x += move_sens;
         }
 
         if(keymask[SDL_SCANCODE_Q]) {
@@ -102,6 +104,8 @@ int main(int argc, char *argv[]) {
 
         if(keymask[SDL_SCANCODE_SPACE]) {
             if(frame_relax == 0) {
+                camera.trans.pos = {0,0,10};
+                camera.trans.rot = hf::util::eulerToQuat({0,0,0});
                 frame_relax = 2000;
             }
         }
