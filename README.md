@@ -11,6 +11,7 @@ Demos, games, really anything that can use libraries for 3D graphics, fonts, phy
 - Replace the path of glm_DIR with whereever you have it installed.
 - Replace the path of the error logs in build.sh with wherever you put them.
 
+Get a [release .zip of Hardframe](https://github.com/iMakeMehPrograms/hardframe/releases/). Unpack it. 
 Run build.sh with any of these arguments:
 
 - run: Execute the binary after finished
