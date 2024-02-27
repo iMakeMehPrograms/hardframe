@@ -55,77 +55,16 @@ namespace hf {
             glEnableVertexAttribArray(0);
         }
 
+        // Loads the whole OBJ file
         void loadOBJ(mesh_data& storage, std::string filename) {
-            storage.points.clear();
-            storage.groups.clear();
-            std::ifstream file;
-            file.open(filename);
+            loadSubOBJ(storage, filename, "");
+        }
+
+        // Loads the specified object from the OBJ file
+        void loadSubOBJ(mesh_data& storage, std::string filename, std::string subobject) {
+            std::ifstream file(filename);
             if(!file.is_open()) {
-                exit(1);
-            }
-
-            std::string line;
-            std::string mode;
-            std::vector<std::vector<float>> points;
-            std::vector<std::vector<float>> norms;
-            std::vector<std::vector<float>> uvs;
-            std::vector<std::string> tokens;
-            std::string token;
-            std::stringstream tokenizer;
-            while(std::getline(file, line)) {
-                // tokenize
-                tokens.clear();
-                token = "";
-                if(line.length() <= 1) continue; // if nothing continue
-                if(line[0] == '#') continue; // ignore comments entirely
-             
-                tokenizer = std::stringstream(line);
-                while(getline(tokenizer, token, ' ')) {
-                    tokens.push_back(token);
-                }
-
-                if(tokens[0].compare("#") == 0) continue;
-
-                if(tokens[0].compare("v") == 0) {
-                    points.push_back({std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]), 1.0f, 1.0f, 1.0f, 0.0f, 0.0f}); // Add a vert to the list with everything
-                    continue;
-                }   
-                if(tokens[0].compare("vt") == 0) {
-                    uvs.push_back({std::stof(tokens[1]), std::stof(tokens[2])});
-                    continue;
-                } 
-                if(tokens[0].compare("vn") == 0) { 
-                    norms.push_back({std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3])});
-                    continue;
-                }
-                if(tokens[0].compare("f") == 0) {
-                    std::vector<std::string> subtokens;
-                    std::string subtoken;
-                    std::stringstream subtokenizer;
-                    for(size_t e = 0; e < 3; e++) {
-                        subtokens.clear();
-                        subtoken = "";
-                        subtokenizer = std::stringstream(tokens[e + 1]);
-                        while(getline(subtokenizer, subtoken, '/')) {
-                            subtokens.push_back(subtoken);
-                        }
-
-                        int row = std::stoi(subtokens[0]) - 1;
-                        storage.groups.push_back(row);
-
-                        points[row][6] = uvs[std::stoi(subtokens[1]) - 1][0];
-                        points[row][7] = uvs[std::stoi(subtokens[1]) - 1][1];
-                        
-                        points[row][3] = norms[std::stoi(subtokens[2]) - 1][0];
-                        points[row][4] = norms[std::stoi(subtokens[2]) - 1][1];
-                        points[row][5] = norms[std::stoi(subtokens[2]) - 1][2];
-                    }
-                }
-            }
-            for(size_t i = 0; i < points.size(); i++) {
-                for(size_t e = 0; e < points[1].size(); e++) {
-                    storage.points.push_back(points[i][e]);
-                }
+                util::addMessage({"OBJ file could not be found!", util::})
             }
         }
 
