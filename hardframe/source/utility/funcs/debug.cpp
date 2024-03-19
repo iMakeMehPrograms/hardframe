@@ -35,6 +35,9 @@ namespace hf {
 
                 case log_level::verbose:
                 return "Verbose";
+
+                case log_level::exit_level:
+                return "Exit";
             }
         }
 
@@ -43,6 +46,10 @@ namespace hf {
             console_output = con_out;
             logfile_output = log_out;
             logfile_name = log_name;
+
+            std::ofstream file;
+            file.open(logfile_name + ".hflog", std::ofstream::out | std::ofstream::trunc);
+            file.close();
         }
 
         void defOutput(log message) {
@@ -58,6 +65,11 @@ namespace hf {
                     addMessage({"Logfile couldn't be opened!", error_code::file_failed_to_load, log_level::warning});
                 }
             }
+        }
+
+        void safeExit() {
+            addMessage({"Safe Exit called! Exiting.", util::error_code::exit_error, util::log_level::exit_level});
+            exit(1);
         }
 
         void addMessage(log message) {

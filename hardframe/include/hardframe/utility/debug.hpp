@@ -19,6 +19,7 @@ namespace hf {
             non_error = 0,
             searching = 1,
             eldritch = 2,
+            exit_error = 3,
 
             // Memory
             null_pointer = 64,
@@ -50,6 +51,9 @@ namespace hf {
             model_not_found = 142,
             model_parse_error = 143,
 
+            image_not_found = 145,
+
+
             // Files & Parsing
             file_not_found = 192,
             token_unknown = 193,
@@ -70,7 +74,8 @@ namespace hf {
             warning = 1,
             fatal = 2,
             debug = 3,
-            verbose = 4
+            verbose = 4,
+            exit_level = 5
         };
 
         struct log {
@@ -98,5 +103,7 @@ namespace hf {
         std::string stringPlusCString(std::string str, const char * c_str);
 
         bool messageRemaining();
+
+        void safeExit();
     }
 }

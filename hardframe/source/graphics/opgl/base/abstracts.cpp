@@ -37,11 +37,13 @@ namespace hf {
 
             if(SDL_Init(SDL_INIT_EVENTS | SDL_INIT_VIDEO) < 0) {
                 util::addMessage({"SDL initalization failed!", util::error_code::sdl_init_fail, util::log_level::fatal});
+                util::safeExit();
             }
 
             sdl_win = SDL_CreateWindow(sdl_name, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
             if(sdl_win == NULL) {
                 util::addMessage({"SDL window didn't open!", util::error_code::sdl_window_fail, util::log_level::fatal});
+                util::safeExit();
             }
 
             SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE); // set to core version
@@ -54,6 +56,7 @@ namespace hf {
             context = SDL_GL_CreateContext(sdl_win);
             if(context == NULL) {
                 util::addMessage({"SDL-GL context couldn't be made!", util::error_code::sdl_gl_context_null, util::log_level::fatal});
+                util::safeExit();
             }
 
             // GLEW Setup
@@ -61,17 +64,15 @@ namespace hf {
             GLenum error = glewInit();
             if(error != GLEW_NO_ERROR) {
                 util::addMessage({"GLEW initalization failed!", util::error_code::glew_init_fail, util::log_level::message});
+                util::safeExit();
             }
 
             // GL Setup
             glEnable(GL_DEPTH_TEST);
-            //glCullFace(GL_BACK);
             glFrontFace(GL_CCW);
 
-            //glEnable(GL_CULL_FACE);
-
-            glPolygonMode(GL_FRONT, GL_FILL);
-            glPolygonMode(GL_BACK, GL_LINE);
+            glCullFace(GL_BACK);
+            glEnable(GL_CULL_FACE);
 
             glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -185,9 +186,9 @@ namespace hf {
 
         void renderer::wireframeSwitch(bool value) {
             if(value) {
-                glPolygonMode(GL_FRONT, GL_LINE);
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
             } else {
-                glPolygonMode(GL_FRONT, GL_FILL);
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
             }
         }
 

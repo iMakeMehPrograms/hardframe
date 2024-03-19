@@ -20,8 +20,8 @@ int main(int argc, char *argv[]) {
     hf::opgl::mesh_data ldr = {{}, {}};
     hf::opgl::loadOBJ(ldr, "files/uvcube.obj");
     hf::opgl::mesh cube(ldr);
-    hf::opgl::loadOBJ(ldr, "files/rocky_terrain.obj");
-    hf::opgl::mesh terrain(ldr);
+    //hf::opgl::loadOBJ(ldr, "files/rocky_terrain.obj");
+    //hf::opgl::mesh terrain(ldr);
 
     hf::opgl::image stone_albedo("files/stonemix_eb_reg.png");
     hf::opgl::material stone = {stone_albedo};
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     hf::opgl::camera camera(45.0f, {{0,0,10}, hf::util::eulerToQuat({0,0,0}), {1, 1, 1}});
 
     hf::opgl::object block = {{{0,0,0}, hf::util::eulerToQuat({0, 0, 0}), {1, 1, 1}}, cube, flat, moss};
-    hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, moss};
+    //hf::opgl::object ground = {{{0,-3, 0}, hf::util::eulerToQuat({0,0,0}), {10, 5, 10}}, terrain, flat, moss};
     hf::opgl::renderer render = hf::opgl::renderer();
     render.colorSwitch(true);
 
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
 
     const uint8_t* keymask;
     float rot_sens = 0.015f;
-    float move_sens = 0.01f;
+    float move_sens = 0.005f;
 
     glm::vec3 rot_dir(0.0f);
     glm::vec3 move_dir(0.0f);
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
 
         render.prepare(win, camera);
 
-        render.renderObject(win, camera, ground);
+        //render.renderObject(win, camera, ground);
         render.renderObject(win, camera, block);
 
         render.blit(win);

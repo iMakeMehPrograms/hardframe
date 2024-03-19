@@ -15,10 +15,10 @@ Get a [release .zip of Hardframe](https://github.com/iMakeMehPrograms/hardframe/
 Run build.sh with any of these arguments:
 
 - run: Execute the binary after finished
-- config: Configure cmake (adds the caches back)(useful for a complete reset)
-- delete: Delete everything in the build folder to build from nothing. If you have this arg and build without the arg config it will fail.
+- config: Configure cmake (remakes the configs/caches, needed for debugging/resetting)
+- delete: Delete everything in the build folder to build from nothing. If you have this arg and build without the config arg it will fail.
 - nobuild: Skips the build proccess, useful for just executing the binary.
-- clean: Deletes .a files from static libraries. 
+- clean: Deletes leftover (specifically *unneeded*) linker files after the build
 
 ## List of Libraries ##
 - Utility
